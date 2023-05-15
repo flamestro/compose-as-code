@@ -1,0 +1,35 @@
+{
+  "name": "compose-as-code",
+  "version": "1.0.0",
+  "description": "Provides a module to express docker compose files as code",
+  "main": "index.ts",
+  "scripts": {
+    "test": "yarn tsc && node dist/__test__/index.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flamestro/compose-as-code.git"
+  },
+  "keywords": [
+    "docker-compose",
+    "iac",
+    "docker",
+    "as",
+    "code",
+    "compose",
+    "as",
+    "code"
+  ],
+  "author": "Ahmet Kilic @flamestro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flamestro/compose-as-code/issues"
+  },
+  "homepage": "https://github.com/flamestro/compose-as-code#readme",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@types/node": "^7.0.5"
+  }
+}

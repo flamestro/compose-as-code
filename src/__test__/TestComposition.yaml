@@ -1,0 +1,9 @@
+version: "3.8"
+name: TestComposition
+services:
+	TestComposition-TestService1:
+		image: "redis"
+	TestComposition-TestService2:
+		image: "redis"
+	TestComposition-TestService3:
+		image: "redis"
