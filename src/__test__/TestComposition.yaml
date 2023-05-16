@@ -1,9 +1,19 @@
 version: "3.8"
-name: TestComposition
+name: testcomposition
+
 services:
-	TestComposition-TestService1:
-		image: "redis"
-	TestComposition-TestService2:
-		image: "redis"
-	TestComposition-TestService3:
-		image: "redis"
+  TestComposition-TestService1:
+    image: "redis"
+    pull_policy: "always"
+    expose:
+      - 8080
+  TestComposition-TestService2:
+    image: "redis"
+    pull_policy: "always"
+    expose:
+      - 8080
+  TestComposition-TestService3:
+    image: "redis"
+    pull_policy: "always"
+    expose:
+      - 8080

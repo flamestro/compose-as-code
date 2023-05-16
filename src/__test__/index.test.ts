@@ -1,11 +1,13 @@
 import {Composition, CompositionProps} from "../composition";
 import {Service} from "../service";
-import {compile} from "../index";
+import {compile} from "../compositionCompiler";
 
 class TestRedisService extends Service {
     constructor(scope, id) {
         super(scope, id, {
-            image: "redis"
+            image: "redis",
+            pullPolicy: 'always',
+            expose: ['8080']
         });
     }
 }
