@@ -1,5 +1,5 @@
 import {Composition} from "../composition/composition";
-import {target} from "../index";
+import {target} from "../cli";
 import {compileKeyValuePair, writeFile} from "./compilerUtils";
 import {compileServices} from "./serviceCompiler";
 import {compileNetworks} from "./networkCompiler";
