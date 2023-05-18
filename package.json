@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "NODE_ENV=test jest --testMatch='**/*.test.ts'",
+    "build": "yarn tsc",
     "patch": "npm version patch",
     "major": "npm version major",
     "minor": "npm version minor"
