@@ -9,3 +9,4 @@ tsconfig.json
 yarn.lock
 yarn-error.log
 composer.config.json
+.github
