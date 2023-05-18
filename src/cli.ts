@@ -3,23 +3,15 @@
 import fs from "fs";
 import * as esbuild from 'esbuild'
 
-import {Composition} from "./composition/composition";
 import {compile} from "./compiler/compositionCompiler";
 import {loadConfiguration} from "./configuration/configLoader";
 
-interface Target {
-    compositions: Composition[]
-}
-
-export const target: Target = {
-    compositions: []
-}
 
 console.log("Loading cac configuration")
 const configuration = loadConfiguration()
 
-console.log("Compiling Composition")
 
+console.log("Bundling Composition")
 esbuild.buildSync({
     entryPoints: [configuration.entrypoint],
     bundle: true,
@@ -28,6 +20,7 @@ esbuild.buildSync({
     platform: 'node'
 })
 
+console.log("Transpiling Composition")
 fs.readFile(`${configuration.outputDir}/bundled.js`, {encoding: 'utf-8'}, function(err, data){
     if (!err) {
         eval(data);

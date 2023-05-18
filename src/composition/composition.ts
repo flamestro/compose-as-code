@@ -1,6 +1,6 @@
 import {Service} from "./service";
 import {Network} from "./network";
-import {target} from "../cli";
+import {target} from "../target";
 
 export interface CompositionProps {
     name: string,
