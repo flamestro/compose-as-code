@@ -1,6 +1,6 @@
 {
   "name": "compose-as-code",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Provides a module to express docker compose files as code",
   "main": "./dist/cli.js",
   "types": "index.d.ts",
