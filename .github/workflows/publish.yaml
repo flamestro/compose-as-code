@@ -11,6 +11,6 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: yarn release
+      - run: yarn release:ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
