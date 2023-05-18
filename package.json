@@ -1,11 +1,13 @@
 {
   "name": "compose-as-code",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Provides a module to express docker compose files as code",
   "main": "./dist/index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "NODE_ENV=test jest --testMatch='**/*.test.ts'",
-    "build": "yarn tsc",
+    "build": "tsc",
+    "release": "tsc && yarn publish",
     "patch": "npm version patch",
     "major": "npm version major",
     "minor": "npm version minor"
