@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import * as ts from "typescript";
-import {ModuleKind, ScriptTarget} from "typescript";
+import {ModuleKind, ModuleResolutionKind, ScriptTarget} from "typescript";
 import fs from "fs";
 
 import {Composition} from "./composition/composition";
@@ -26,7 +26,8 @@ fs.readFile(configuration.entrypoint, {encoding: 'utf-8'}, function(err, data){
             target: ScriptTarget.ES2017,
             esModuleInterop: true,
             module: ModuleKind.CommonJS,
-            allowJs: true
+            allowJs: true,
+            moduleResolution: ModuleResolutionKind.Node16
         });
 
         eval(result);
