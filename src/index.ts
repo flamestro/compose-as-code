@@ -1,4 +1,7 @@
+#!/usr/bin/env node
+
 import {Composition} from "./composition/composition";
+import {compile} from "./compiler/compositionCompiler";
 
 interface Target {
     compositions: Composition[]
@@ -7,3 +10,6 @@ interface Target {
 export const target: Target = {
     compositions: []
 }
+
+console.log("Compiling Composition")
+compile()
