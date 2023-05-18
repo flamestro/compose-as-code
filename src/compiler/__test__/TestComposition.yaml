@@ -6,8 +6,16 @@ services:
     pull_policy: "always"
     expose: 
       - 8080
+    environment: 
+      BOOL: true
+      STR: Test
+      INT: 123
   TestComposition-TestService2: 
     image: "redis"
     pull_policy: "always"
     expose: 
       - 8080
+    environment: 
+      BOOL: true
+      STR: Test
+      INT: 123

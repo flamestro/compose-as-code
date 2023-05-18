@@ -8,7 +8,12 @@ it('should just run at the moment', function () {
             super(scope, id, {
                 image: "redis",
                 pullPolicy: 'always',
-                expose: ['8080']
+                expose: ['8080'],
+                environment: {
+                    BOOL: true,
+                    STR: "Test",
+                    INT: 123,
+                }
             });
         }
     }
