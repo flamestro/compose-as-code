@@ -17,6 +17,7 @@ const compileCompositionMetaData = (composition: Composition) => {
 }
 
 export const compile = (compilerProps?: CompilerProps) => {
+    console.log(`Found ${target.compositions.length} compositions to compile`)
     target.compositions.forEach(
         composition => {
             let resultFileContent = ''
