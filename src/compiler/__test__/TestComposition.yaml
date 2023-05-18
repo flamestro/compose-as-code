@@ -10,6 +10,12 @@ services:
       BOOL: true
       STR: Test
       INT: 123
+    cpus: "0.2"
+    mem_reservation: "10M"
+    mem_limit: "200M"
+    networks: 
+      TestComposition-TestNetwork1: 
+      TestComposition-TestNetwork2: 
   TestComposition-TestService2: 
     image: "redis"
     pull_policy: "always"
@@ -19,3 +25,11 @@ services:
       BOOL: true
       STR: Test
       INT: 123
+    cpus: "0.2"
+    mem_reservation: "10M"
+    mem_limit: "200M"
+    networks: 
+      TestComposition-TestNetwork1: 
+networks: 
+  TestComposition-TestNetwork1: 
+  TestComposition-TestNetwork2: 

@@ -1,5 +1,6 @@
 import {Service} from "./service";
 import {target} from "../index";
+import {Network} from "./network";
 
 export interface CompositionProps {
     name: string,
@@ -11,6 +12,7 @@ export class Composition {
     name: string;
     id: string;
     services: Service[] = []
+    networks: Network[] = []
 
     constructor(id, props: CompositionProps) {
         this.version = props.version
