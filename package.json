@@ -18,7 +18,7 @@
     "url": "git+https://github.com/flamestro/compose-as-code.git"
   },
   "bin": {
-    "cac": "./dist/index.js"
+    "cac": "./dist/cli.js"
   },
   "keywords": [
     "docker-compose",
