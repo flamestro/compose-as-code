@@ -7,7 +7,6 @@
   "scripts": {
     "test": "NODE_ENV=test jest --testMatch='**/*.test.ts'",
     "build": "tsc",
-    "release": "tsc && yarn minor && yarn publish",
     "release:ci": "yarn install --frozen-lockfile && tsc && yarn publish",
     "patch": "npm version patch",
     "major": "npm version major",
