@@ -1,6 +1,6 @@
 {
   "name": "compose-as-code",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Provides a module to express docker compose files as code",
   "main": "./dist/index.js",
   "scripts": {
@@ -8,8 +8,7 @@
     "build": "yarn tsc",
     "patch": "npm version patch",
     "major": "npm version major",
-    "minor": "npm version minor",
-    "compose": "composer"
+    "minor": "npm version minor"
   },
   "repository": {
     "type": "git",
@@ -44,7 +43,6 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@types/node": "^7.0.5",
-    "compose-as-code": "^0.0.4"
+    "@types/node": "^7.0.5"
   }
 }
