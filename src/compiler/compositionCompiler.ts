@@ -32,7 +32,6 @@ export const compile = (compilerProps?: CompilerProps) => {
                 outputDir: compilerProps.outputDir ?? './out',
                 content: resultFileContent
             })
-
         }
     )
 }

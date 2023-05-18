@@ -4,7 +4,10 @@
   "description": "Provides a module to express docker compose files as code",
   "main": "index.ts",
   "scripts": {
-    "test": "NODE_ENV=test jest --testMatch='**/*.test.ts'"
+    "test": "NODE_ENV=test jest --testMatch='**/*.test.ts'",
+    "verpatch": "npm version patch",
+    "vermajor": "npm version major",
+    "verminor": "npm version minor"
   },
   "repository": {
     "type": "git",
