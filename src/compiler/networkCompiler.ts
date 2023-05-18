@@ -4,12 +4,14 @@ import {Network} from "../composition/network";
 
 const compileNetwork = (network: Network) => {
     let networkTextBlock = ''
-    networkTextBlock += compileKeyValuePair(network.id, '', 1);
+    const baseIndentation = 1
+    networkTextBlock += compileKeyValuePair(network.id, '', baseIndentation);
     return networkTextBlock
 }
 
 export const compileNetworks = (composition: Composition) => {
-    let networksTextBlock = compileKeyValuePair('networks', '', 0);
+    const baseIndentation = 0
+    let networksTextBlock = compileKeyValuePair('networks', '', baseIndentation);
     composition.networks.forEach(service => {
         networksTextBlock += compileNetwork(service)
     })

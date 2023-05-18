@@ -9,9 +9,10 @@ interface CompilerProps {
 }
 
 const compileCompositionMetaData = (composition: Composition) => {
+    const baseIndentation = 0
     let result = ''
-    result += compileKeyValuePair('version', composition.version, 0)
-    result += compileKeyValuePair('name', composition.name.toLowerCase(), 0)
+    result += compileKeyValuePair('version', composition.version, baseIndentation)
+    result += compileKeyValuePair('name', composition.name.toLowerCase(), baseIndentation)
     return result
 }
 

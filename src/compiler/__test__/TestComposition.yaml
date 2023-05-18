@@ -1,11 +1,13 @@
 version: "3.8"
 name: "testcomposition"
 services: 
-  TestComposition-TestService1: 
+  TestCompositionTestService1: 
     image: "redis"
     pull_policy: "always"
     expose: 
       - 8080
+    ports: 
+      - 19132:19132/udp
     environment: 
       BOOL: true
       STR: Test
@@ -14,13 +16,15 @@ services:
     mem_reservation: "10M"
     mem_limit: "200M"
     networks: 
-      TestComposition-TestNetwork1: 
-      TestComposition-TestNetwork2: 
-  TestComposition-TestService2: 
+      TestCompositionTestNetwork1: 
+      TestCompositionTestNetwork2: 
+  TestCompositionTestService2: 
     image: "redis"
     pull_policy: "always"
     expose: 
       - 8080
+    ports: 
+      - 19132:19132/udp
     environment: 
       BOOL: true
       STR: Test
@@ -29,7 +33,9 @@ services:
     mem_reservation: "10M"
     mem_limit: "200M"
     networks: 
-      TestComposition-TestNetwork1: 
+      TestCompositionTestNetwork1: 
+    depends_on: 
+      - TestCompositionTestService1
 networks: 
-  TestComposition-TestNetwork1: 
-  TestComposition-TestNetwork2: 
+  TestCompositionTestNetwork1: 
+  TestCompositionTestNetwork2: 

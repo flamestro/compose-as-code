@@ -37,6 +37,15 @@ export const compileObject = (obj: object, baseIndentationDepth: number) => {
     return result
 }
 
+export const compileObjectListWithId = (list: {id: string }[], baseIndentationDepth: number) => {
+    let result = ''
+    list.forEach(entry => {
+        result += indent(baseIndentationDepth)
+        result += `- ${entry.id}\n`
+    })
+    return result
+}
+
 export const compileList = (list: string[], baseIndentationDepth: number) => {
     let result = ''
     list.forEach(entry => {
