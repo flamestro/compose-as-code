@@ -4,7 +4,7 @@
   "description": "Provides a module to express docker compose files as code",
   "main": "index.ts",
   "scripts": {
-    "test": "yarn tsc && node dist/__test__/index.test.js"
+    "test": "NODE_ENV=test jest --testMatch='**/*.test.ts'"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,12 @@
   },
   "homepage": "https://github.com/flamestro/compose-as-code#readme",
   "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-typescript": "^7.21.5",
+    "@types/jest": "^29.5.1",
+    "babel-jest": "^29.5.0",
+    "jest": "^29.5.0",
     "typescript": "^5.0.4"
   },
   "dependencies": {

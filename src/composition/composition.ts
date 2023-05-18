@@ -1,5 +1,5 @@
 import {Service} from "./service";
-import {target} from "./index";
+import {target} from "../index";
 
 export interface CompositionProps {
     name: string,

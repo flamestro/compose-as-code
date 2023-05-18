@@ -1,8 +1,18 @@
 import fs from "fs";
-import {Composition} from "./composition";
-import {target} from "./index";
+import {Composition} from "../composition/composition";
+import {target} from "../index";
 
 const INDENTATION_CHARACTER = '  '
+
+interface OutputConfig {
+    fileName: string,
+    outputDir: string,
+    content: string,
+}
+
+interface CompilerProps {
+    outputDir?: string,
+}
 
 const createDirIfNotExisting = (dirname: string) => {
     if (!fs.existsSync(dirname)){
@@ -54,22 +64,18 @@ const compileServices = (composition: Composition) => {
     return serviceTextBlock
 }
 
-interface OutputConfig {
-    fileName: string,
-    outputDir: string,
-    content: string,
-}
-
 const writeFile = (config: OutputConfig) => {
     createDirIfNotExisting(config.outputDir)
-    fs.writeFile(`${config.outputDir}/${config.fileName}.yaml`, config.content, err => {
+    const resultFileName = `${config.outputDir}/${config.fileName}.yaml`
+    console.log(`writing file ${resultFileName}`)
+    fs.writeFile(resultFileName, config.content, err => {
         if (err) {
             console.error(err);
         }
     });
 }
 
-export const compile = () => {
+export const compile = (compilerProps?: CompilerProps) => {
     target.compositions.forEach(
         composition => {
             let resultFileContent = ''
@@ -77,7 +83,7 @@ export const compile = () => {
             resultFileContent += compileServices(composition)
             writeFile({
                 fileName: composition.id,
-                outputDir: './out',
+                outputDir: compilerProps.outputDir ?? './out',
                 content: resultFileContent
             })
 

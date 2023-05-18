@@ -1,4 +1,4 @@
-import {Composition} from "./composition";
+import {Composition} from "./composition/composition";
 
 interface Target {
     compositions: Composition[]
