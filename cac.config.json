@@ -1,0 +1,4 @@
+{
+  "entrypoint": "YOUR_ENTRY_FILE",
+  "outputDir": "YOUR_ENTRY_FILE"
+}
