@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
-import * as ts from "typescript";
-import {ModuleKind, ModuleResolutionKind, ScriptTarget} from "typescript";
 import fs from "fs";
+import * as esbuild from 'esbuild'
 
 import {Composition} from "./composition/composition";
 import {compile} from "./compiler/compositionCompiler";
@@ -20,17 +19,16 @@ console.log("Loading cac configuration")
 const configuration = loadConfiguration()
 
 console.log("Compiling Composition")
-fs.readFile(configuration.entrypoint, {encoding: 'utf-8'}, function(err, data){
-    if (!err) {
-        const result = ts.transpile(data, {
-            target: ScriptTarget.ES2017,
-            esModuleInterop: true,
-            module: ModuleKind.CommonJS,
-            allowJs: true,
-            moduleResolution: ModuleResolutionKind.Node16
-        });
 
-        eval(result);
+esbuild.buildSync({
+    entryPoints: [configuration.entrypoint],
+    bundle: true,
+    outfile: `${configuration.outputDir}/bundled.js`,
+})
+
+fs.readFile(`${configuration.outputDir}/bundled.js`, {encoding: 'utf-8'}, function(err, data){
+    if (!err) {
+        eval(data);
 
         compile({
             outputDir: configuration.outputDir

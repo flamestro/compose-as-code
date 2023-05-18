@@ -4,6 +4,7 @@ services:
   TestCompositionTestService1: 
     image: "redis"
     pull_policy: "always"
+    restart: "always"
     expose: 
       - 8080
     ports: 
@@ -21,6 +22,7 @@ services:
   TestCompositionTestService2: 
     image: "redis"
     pull_policy: "always"
+    restart: "always"
     expose: 
       - 8080
     ports: 
