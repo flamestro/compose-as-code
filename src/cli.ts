@@ -24,7 +24,7 @@ esbuild.buildSync({
     entryPoints: [configuration.entrypoint],
     bundle: true,
     outfile: `${configuration.outputDir}/bundled.js`,
-    target: 'node'
+    target: 'node16'
 })
 
 fs.readFile(`${configuration.outputDir}/bundled.js`, {encoding: 'utf-8'}, function(err, data){
