@@ -1,5 +1,6 @@
 import {Service} from "./service";
 import {Network} from "./network";
+import {Target} from "../target";
 
 export interface CompositionProps {
     name: string,
@@ -17,6 +18,6 @@ export class Composition {
         this.version = props.version
         this.name = props.name
         this.id = id;
-        globalThis.target.compositions.push(this);
+        (globalThis.target as Target).compositions.push(this);
     }
 }
