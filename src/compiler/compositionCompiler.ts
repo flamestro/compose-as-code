@@ -1,11 +1,10 @@
 import {Composition} from "../composition/composition";
-import {target} from "../target";
 import {compileKeyValuePair, writeFile} from "./compilerUtils";
 import {compileServices} from "./serviceCompiler";
 import {compileNetworks} from "./networkCompiler";
 
 interface CompilerProps {
-    outputDir?: string,
+    outputDir: string,
 }
 
 const compileCompositionMetaData = (composition: Composition) => {
@@ -16,9 +15,9 @@ const compileCompositionMetaData = (composition: Composition) => {
     return result
 }
 
-export const compile = (compilerProps?: CompilerProps) => {
-    console.log(`Found ${target.compositions.length} compositions to compile`)
-    target.compositions.forEach(
+export const compile = (compilerProps: CompilerProps) => {
+    console.log(`Found ${globalThis.target.compositions.length} compositions`)
+    globalThis.target.compositions.forEach(
         composition => {
             let resultFileContent = ''
             resultFileContent += compileCompositionMetaData(composition)
@@ -30,7 +29,7 @@ export const compile = (compilerProps?: CompilerProps) => {
             }
             writeFile({
                 fileName: composition.id,
-                outputDir: compilerProps.outputDir ?? './out',
+                outputDir: compilerProps.outputDir,
                 content: resultFileContent
             })
         }

@@ -9,7 +9,9 @@ it('should just run at the moment', function () {
             super(scope, id, {});
         }
     }
-
+    globalThis.target = {
+        compositions: []
+    }
     class TestRedisService extends Service {
         constructor(scope, id, props: {networks: Network[], dependsOn: Service[]}) {
             super(scope, id, {

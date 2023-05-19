@@ -17,7 +17,7 @@ esbuild.buildSync({
     bundle: true,
     outfile: `${configuration.outputDir}/bundled.js`,
     target: 'node16',
-    platform: 'node'
+    platform: 'node',
 })
 
 console.log("Transpiling Composition")

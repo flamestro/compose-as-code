@@ -4,6 +4,9 @@ interface Target {
     compositions: Composition[]
 }
 
-export const target: Target = {
+declare global {
+    var target: Target;
+}
+globalThis.target = {
     compositions: []
 }
