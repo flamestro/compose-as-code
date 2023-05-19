@@ -1,10 +1,13 @@
 # compose-as-code
 
-This project provides a way of expressing and generating docker compose as typescript/javascript code.
+![Compose as Code](./.github/assets/logo.png)
+
+This project provides a way of expressing and generating docker compose as typescript code.
 
 # How to
 
-Currently, no init command exists. Therefore, a manual setup is needed at the moment.
+Currently, no init command exists.  
+Therefore, a manual setup is needed at the moment.
 
 1. Create an npm project (typescript)
 2. install `npm install compose-as-code`
