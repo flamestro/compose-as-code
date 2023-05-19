@@ -16,8 +16,13 @@ const compileCompositionMetaData = (composition: Composition) => {
 }
 
 export const compile = (compilerProps: CompilerProps) => {
-    console.log(`Found ${globalThis.target.compositions.length} compositions`)
-    globalThis.target.compositions.forEach(
+    const app = globalThis.cacStore.app
+    if(!app) {
+        console.error("No app was defined. Without an app there is no composition possible.")
+        return -1;
+    }
+    console.log(`Found ${app.compositions.length} compositions`)
+    app.compositions.forEach(
         composition => {
             let resultFileContent = ''
             resultFileContent += compileCompositionMetaData(composition)

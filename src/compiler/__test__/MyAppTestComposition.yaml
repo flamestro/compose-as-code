@@ -1,7 +1,7 @@
 version: "3.8"
 name: "testcomposition"
 services: 
-  TestCompositionTestService1: 
+  MyAppTestCompositionTestService1: 
     image: "redis"
     pull_policy: "always"
     restart: "always"
@@ -17,9 +17,9 @@ services:
     mem_reservation: "10M"
     mem_limit: "200M"
     networks: 
-      TestCompositionTestNetwork1: 
-      TestCompositionTestNetwork2: 
-  TestCompositionTestService2: 
+      MyAppTestCompositionTestNetwork1: 
+      MyAppTestCompositionTestNetwork2: 
+  MyAppTestCompositionTestService2: 
     image: "redis"
     pull_policy: "always"
     restart: "always"
@@ -35,9 +35,9 @@ services:
     mem_reservation: "10M"
     mem_limit: "200M"
     networks: 
-      TestCompositionTestNetwork1: 
+      MyAppTestCompositionTestNetwork1: 
     depends_on: 
-      - TestCompositionTestService1
+      - MyAppTestCompositionTestService1
 networks: 
-  TestCompositionTestNetwork1: 
-  TestCompositionTestNetwork2: 
+  MyAppTestCompositionTestNetwork1: 
+  MyAppTestCompositionTestNetwork2: 

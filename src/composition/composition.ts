@@ -1,6 +1,7 @@
 import {Service} from "./service";
 import {Network} from "./network";
-import {Target} from "../target";
+import {App} from "./app";
+import {log} from "util";
 
 export interface CompositionProps {
     name: string,
@@ -14,10 +15,10 @@ export class Composition {
     services: Service[] = []
     networks: Network[] = []
 
-    constructor(id: string, props: CompositionProps) {
+    constructor(scope: App, logicalId: string, props: CompositionProps) {
         this.version = props.version
         this.name = props.name
-        this.id = id;
-        (globalThis.target as Target).compositions.push(this);
+        this.id = scope.id + logicalId;
+        scope.register(this);
     }
 }

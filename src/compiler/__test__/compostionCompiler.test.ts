@@ -2,6 +2,7 @@ import {Composition, CompositionProps} from "../../composition/composition";
 import {Service} from "../../composition/service";
 import {compile} from "../compositionCompiler";
 import {Network} from "../../composition/network";
+import {App} from "../../composition/app";
 
 it('should just run at the moment', function () {
     class TestNetwork extends Network {
@@ -9,9 +10,7 @@ it('should just run at the moment', function () {
             super(scope, id, {});
         }
     }
-    globalThis.target = {
-        compositions: []
-    }
+    const app = new App("MyApp")
     class TestRedisService extends Service {
         constructor(scope, id, props: {networks: Network[], dependsOn: Service[]}) {
             super(scope, id, {
@@ -36,7 +35,7 @@ it('should just run at the moment', function () {
 
     class TestComposition extends Composition {
         constructor(id: string, props: CompositionProps) {
-            super(id, props);
+            super(app, id, props);
             const network1 = new TestNetwork(this, "TestNetwork1")
             const network2 = new TestNetwork(this, "TestNetwork2")
             const service1 = new TestRedisService(this, "TestService1", {networks: [network1, network2], dependsOn: []})
