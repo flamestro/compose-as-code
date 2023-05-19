@@ -8,7 +8,7 @@ globalThis.cacStore = {
 
 export class App {
     id: string;
-    compositions: Composition[];
+    compositions: Composition[] = [];
 
     constructor(id: string, props?: AppProps) {
         this.id = id;
