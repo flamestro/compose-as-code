@@ -17,7 +17,7 @@
   "scripts": {
     "test": "NODE_ENV=test jest --testMatch='**/*.test.ts'",
     "build": "../../node_modules/.bin/tsc",
-    "release:ci": "yarn install --frozen-lockfile && ../../node_modules/.bin/tsc && yarn publish",
+    "release:ci": "yarn install --frozen-lockfile && yarn tsc && yarn publish",
     "patch": "npm version patch",
     "major": "npm version major",
     "minor": "npm version minor"

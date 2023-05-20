@@ -10,10 +10,10 @@
   },
   "lib": ["es2015"],
   "include": [
-    "packages/create-compose-as-code/src/**/*"
+    "src/**/*"
   ],
   "exclude": [
-    "packages/create-compose-as-code/src/**/*.test.ts"
+    "src/**/*.test.ts"
   ]
 }
 
