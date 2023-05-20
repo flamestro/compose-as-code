@@ -1,6 +1,6 @@
 {
   "name": "create-compose-as-code",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Initializes a compose-as-code project",
   "main": "./lib/cli.js",
   "scripts": {
