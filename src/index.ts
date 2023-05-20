@@ -1,3 +1,4 @@
-export * from "./composition/service"
-export * from "./composition/composition"
-export * from "./composition/network"
+export {Service, ServiceProps} from "./composition/service"
+export {Composition, CompositionProps} from "./composition/composition"
+export {Network, NetworkProps} from "./composition/network"
+export {App, AppProps} from "./composition/app"

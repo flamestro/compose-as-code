@@ -4,6 +4,7 @@
   "description": "Provides a module to express docker compose files as code",
   "main": "./dist/cli.js",
   "types": "index.d.ts",
+  "exports": "./index.js",
   "scripts": {
     "test": "NODE_ENV=test jest --testMatch='**/*.test.ts'",
     "build": "tsc",
