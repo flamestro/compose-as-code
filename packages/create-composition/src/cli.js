@@ -17,6 +17,11 @@ fs.renameSync(
     path.join(projectDir, '.gitignore')
 );
 
+fs.renameSync(
+    path.join(projectDir, 'cac.config.template.json'),
+    path.join(projectDir, 'cac.config.json')
+);
+
 const projectPackageJson = require(path.join(projectDir, 'package.json'));
 
 projectPackageJson.name = projectName;
