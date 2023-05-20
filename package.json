@@ -2,10 +2,15 @@
   "name": "compose-as-code",
   "version": "0.1.2",
   "description": "Provides a module to express docker compose files as code",
-  "main": "./dist/cli.js",
+  "main": "./lib/cli.js",
   "types": "index.d.ts",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./lib/index.js"
+  },
+  "typesVersions": {
+    "*": {
+      ".": ["./lib/index.d.ts"]
+    }
   },
   "scripts": {
     "test": "NODE_ENV=test jest --testMatch='**/*.test.ts'",
@@ -20,7 +25,7 @@
     "url": "git+https://github.com/flamestro/compose-as-code.git"
   },
   "bin": {
-    "cac": "./dist/cli.js"
+    "conduct": "./lib/cli.js"
   },
   "keywords": [
     "docker-compose",
