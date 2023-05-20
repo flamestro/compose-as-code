@@ -6,7 +6,7 @@ This project provides a way of expressing and generating docker compose as types
 
 # Setup Project
 
-`npx create-compose-as-code@latest my-app`
+`npx create-composition@latest my-app`
 
 # Vision
 
