@@ -9,7 +9,7 @@ const currentDir = process.cwd();
 const projectDir = path.resolve(currentDir, projectName);
 fs.mkdirSync(projectDir);
 
-const templateDir = path.resolve(__dirname, 'template');
+const templateDir = path.resolve(__dirname, 'src/template');
 fs.cp(templateDir, projectDir, { recursive: true }, (err) => {
     if (err) {
         console.error(err);
