@@ -9,12 +9,9 @@ const currentDir = process.cwd();
 const projectDir = path.resolve(currentDir, projectName);
 fs.mkdirSync(projectDir);
 
-const templateDir = path.resolve(__dirname, 'src/template');
-fs.cp(templateDir, projectDir, { recursive: true }, (err) => {
-    if (err) {
-        console.error(err);
-    }
-});
+const templateDir = path.resolve(__dirname, 'template');
+console.log(`HERE: ${templateDir}`)
+fs.cpSync(templateDir, projectDir, { recursive: true });
 fs.renameSync(
     path.join(projectDir, 'gitignore'),
     path.join(projectDir, '.gitignore')
