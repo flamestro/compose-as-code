@@ -1,7 +1,6 @@
 import {Service} from "./service";
 import {Network} from "./network";
 import {App} from "./app";
-import {log} from "util";
 
 export interface CompositionProps {
     name: string,
