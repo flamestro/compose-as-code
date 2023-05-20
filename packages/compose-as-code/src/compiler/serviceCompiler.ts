@@ -1,5 +1,5 @@
 import {Composition} from "../composition/composition";
-import {compileKeyValuePair, compileList, compileObject, compileObjectListWithId, indent} from "./compilerUtils";
+import {compileKeyValuePair, compileList, compileObject, compileObjectListWithId} from "./compilerUtils";
 import {Service} from "../composition/service";
 
 const compileService = (service: Service) => {
