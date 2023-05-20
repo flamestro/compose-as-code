@@ -1,0 +1,17 @@
+{
+  "name": "projectName",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "main": "index.ts",
+  "scripts": {
+    "conduct": "conduct"
+  },
+  "dependencies": {
+    "@types/node": "^20.2.1",
+    "compose-as-code": "^0.1.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}

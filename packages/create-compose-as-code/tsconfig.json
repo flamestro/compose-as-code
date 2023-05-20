@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "outDir": "lib",
+    "declaration": true
+  },
+  "lib": ["es2015"],
+  "include": [
+    "packages/create-compose-as-code/src/**/*"
+  ],
+  "exclude": [
+    "packages/create-compose-as-code/src/**/*.test.ts"
+  ]
+}
+

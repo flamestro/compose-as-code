@@ -1,0 +1,31 @@
+{
+  "name": "create-compose-as-code",
+  "version": "0.0.1",
+  "description": "Initializes a compose-as-code project",
+  "main": "./lib/cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "create-compose-as-code": "./lib/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flamestro/compose-as-code.git"
+  },
+  "keywords": [
+    "compose-as-code"
+  ],
+  "author": "Ahmet Kilic @flamestro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flamestro/compose-as-code/issues"
+  },
+  "homepage": "https://github.com/flamestro/compose-as-code#readme",
+  "dependencies": {
+    "@types/node": "^20.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
