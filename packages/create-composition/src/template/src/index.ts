@@ -1,6 +1,6 @@
 import {App} from "compose-as-code";
-import {RedisService} from "./services/redisService";
+import {RedisComposition} from "./compositions/redisComposition";
 
 const app = new App("MyApp")
 
-new RedisService(app, "MyRedisService")
+new RedisComposition(app, "RedisComposition", {version: "3.8", name: "RedisComposition"})
