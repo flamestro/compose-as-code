@@ -10,8 +10,11 @@ const projectDir = path.resolve(currentDir, projectName);
 fs.mkdirSync(projectDir);
 
 const templateDir = path.resolve(__dirname, 'template');
-fs.copyFileSync(templateDir, projectDir);
-
+fs.cp(templateDir, projectDir, { recursive: true }, (err) => {
+    if (err) {
+        console.error(err);
+    }
+});
 fs.renameSync(
     path.join(projectDir, 'gitignore'),
     path.join(projectDir, '.gitignore')
