@@ -1,10 +1,11 @@
 {
   "name": "create-compose-as-code",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Initializes a compose-as-code project",
   "main": "./lib/cli.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release:ci": "yarn install --frozen-lockfile && yarn tsc && yarn publish"
   },
   "bin": {
     "create-compose-as-code": "./lib/cli.js"

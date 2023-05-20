@@ -14,3 +14,6 @@ jobs:
       - run: cd packages && cd compose-as-code && yarn release:ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: cd packages && cd create-compose-as-code && yarn release:ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
