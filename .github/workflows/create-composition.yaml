@@ -1,4 +1,4 @@
-name: Publish create-compose-as-code to npmjs
+name: Publish create-composition to npmjs
 on:
   push:
     branches: [main]
@@ -13,6 +13,6 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: cd packages && cd create-compose-as-code && yarn release:ci
+      - run: cd packages && cd create-composition && yarn release:ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
