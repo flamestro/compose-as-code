@@ -1,9 +1,9 @@
-name: Publish Package to npmjs
+name: Publish create-compose-as-code to npmjs
 on:
   push:
     branches: [main]
     paths:
-      - 'packages/create-compose-as-code'
+      - 'packages/create-compose-as-code/*'
 jobs:
   build:
     runs-on: ubuntu-latest
