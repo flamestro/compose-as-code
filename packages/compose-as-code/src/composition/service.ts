@@ -1,13 +1,24 @@
 import {Composition} from "./composition";
 import {Network} from "./network";
 
+interface ServiceCpuProps {
+    cpuCount?: string,
+    cpuPercent?: string,
+    cpuShares?: string,
+    cpuPeriod?: string,
+    cpuQuota?: string,
+    cpuRtRuntime?: string,
+    cpuRtPeriod?: string,
+    cpus?: string,
+    cpuSet?: string,
+}
 export interface ServiceProps {
     image: string,
     pullPolicy?: "always" |  "if-not-present" | "never",
     restart?: "always" |  "on-failure" |  "unless-stopped" | "no",
     expose?: string[],
     ports?: string[],
-    cpus?: string,
+    cpuProps?: ServiceCpuProps
     memReservation?: string,
     memLimit?: string,
     dependsOn?: Service[],
@@ -22,7 +33,7 @@ export class Service {
     restart?: "always" |  "on-failure" |  "unless-stopped" | "no";
     expose?: string[];
     ports?: string[];
-    cpus?: string;
+    cpuProps?: ServiceCpuProps;
     memReservation?: string;
     memLimit?: string;
     dependsOn?: Service[];
@@ -36,7 +47,7 @@ export class Service {
         this.expose = props.expose ?? undefined
         this.ports = props.ports ?? undefined
         this.environment = props.environment ?? undefined
-        this.cpus = props.cpus ?? undefined
+        this.cpuProps = props.cpuProps ?? undefined
         this.memReservation = props.memReservation ?? undefined
         this.memLimit = props.memLimit ?? undefined
         this.dependsOn = props.dependsOn ?? undefined

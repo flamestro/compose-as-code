@@ -21,13 +21,13 @@ esbuild.buildSync({
 })
 
 console.log("Transpiling Composition")
-fs.readFile(`${configuration.outputDir}/bundled.js`, {encoding: 'utf-8'}, function(err, data){
+fs.readFile(`${configuration.outputDir}/bundled.js`, {encoding: 'utf-8'}, async function (err, data) {
     if (!err) {
         console.log("Starting bundle evaluation")
         eval(data);
 
         console.log("Compiling bundle")
-        compile({
+        await compile({
             outputDir: configuration.outputDir
         })
     } else {

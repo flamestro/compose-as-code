@@ -58,10 +58,5 @@ export const compileList = (list: string[], baseIndentationDepth: number) => {
 export const writeFile = (config: OutputConfig) => {
     createDirIfNotExisting(config.outputDir)
     const resultFileName = `${config.outputDir}/${config.fileName}.yaml`
-    console.log(`writing file ${resultFileName}`)
-    fs.writeFile(resultFileName, config.content, err => {
-        if (err) {
-            console.error(err);
-        }
-    });
+    fs.writeFileSync(resultFileName, config.content);
 }

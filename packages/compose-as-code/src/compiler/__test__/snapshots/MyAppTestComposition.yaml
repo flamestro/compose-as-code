@@ -6,16 +6,15 @@ services:
     pull_policy: "always"
     restart: "always"
     expose: 
-      - 8080
+      - 9080
     ports: 
       - 19132:19132/udp
     environment: 
       BOOL: true
       STR: Test
       INT: 123
-    cpus: "0.2"
+    cpus: "0.02"
     mem_reservation: "10M"
-    mem_limit: "200M"
     networks: 
       MyAppTestCompositionTestNetwork1: 
       MyAppTestCompositionTestNetwork2: 
@@ -24,16 +23,15 @@ services:
     pull_policy: "always"
     restart: "always"
     expose: 
-      - 8080
+      - 9080
     ports: 
       - 19132:19132/udp
     environment: 
       BOOL: true
       STR: Test
       INT: 123
-    cpus: "0.2"
+    cpus: "0.02"
     mem_reservation: "10M"
-    mem_limit: "200M"
     networks: 
       MyAppTestCompositionTestNetwork1: 
     depends_on: 

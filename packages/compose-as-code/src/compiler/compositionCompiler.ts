@@ -15,28 +15,28 @@ const compileCompositionMetaData = (composition: Composition) => {
     return result
 }
 
-export const compile = (compilerProps: CompilerProps) => {
+export const compile = async (compilerProps: CompilerProps) => {
     const app = globalThis.cacStore.app
-    if(!app) {
+    if (!app) {
         console.error("No app was defined. Without an app there is no composition possible.")
         return -1;
     }
     console.log(`Found ${app.compositions.length} compositions`)
-    app.compositions.forEach(
-        composition => {
-            let resultFileContent = ''
-            resultFileContent += compileCompositionMetaData(composition)
-            if(composition.services && composition.services.length > 0){
-                resultFileContent += compileServices(composition)
-            }
-            if(composition.networks && composition.networks.length > 0) {
-                resultFileContent += compileNetworks(composition)
-            }
-            writeFile({
-                fileName: composition.id,
-                outputDir: compilerProps.outputDir,
-                content: resultFileContent
-            })
+    for (const composition of app.compositions) {
+        let resultFileContent = ''
+        resultFileContent += compileCompositionMetaData(composition)
+        if (composition.services && composition.services.length > 0) {
+            resultFileContent += compileServices(composition)
         }
-    )
+        if (composition.networks && composition.networks.length > 0) {
+            resultFileContent += compileNetworks(composition)
+        }
+        writeFile({
+            fileName: composition.id,
+            outputDir: compilerProps.outputDir,
+            content: resultFileContent
+        })
+    }
+    return 0
 }
+

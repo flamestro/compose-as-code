@@ -3,20 +3,38 @@ import {Service} from "../../composition/service";
 import {compile} from "../compositionCompiler";
 import {Network} from "../../composition/network";
 import {App} from "../../composition/app";
+import * as fs from "fs";
+import {createHash} from "crypto";
 
-it('should just run at the moment', function () {
+async function hashDirectory(dirname) {
+    let contentStr = ''
+    const files = fs.readdirSync(dirname);
+
+    files.forEach( (filename) => {
+        const content = fs.readFileSync(dirname + "/" + filename, 'utf-8');
+        console.log(`${filename} + ${content.length}`)
+        contentStr += (filename + content)
+    });
+    return createHash('sha256')
+        .update(contentStr)
+        .digest('hex');
+}
+
+it('should just run at the moment', async function () {
     class TestNetwork extends Network {
         constructor(scope, id) {
             super(scope, id, {});
         }
     }
+
     const app = new App("MyApp")
+
     class TestRedisService extends Service {
-        constructor(scope, id, props: {networks: Network[], dependsOn: Service[]}) {
+        constructor(scope, id, props: { networks: Network[], dependsOn: Service[] }) {
             super(scope, id, {
                 image: "redis",
                 pullPolicy: 'always',
-                expose: ['8080'],
+                expose: ['9080'],
                 ports: ['19132:19132/udp'],
                 environment: {
                     BOOL: true,
@@ -24,8 +42,9 @@ it('should just run at the moment', function () {
                     INT: 123,
                 },
                 memReservation: "10M",
-                memLimit:  "200M",
-                cpus: "0.2",
+                cpuProps: {
+                    cpus: "0.02"
+                },
                 restart: "always",
                 networks: props.networks,
                 dependsOn: props.dependsOn
@@ -39,15 +58,18 @@ it('should just run at the moment', function () {
             const network1 = new TestNetwork(this, "TestNetwork1")
             const network2 = new TestNetwork(this, "TestNetwork2")
             const service1 = new TestRedisService(this, "TestService1", {networks: [network1, network2], dependsOn: []})
-            new TestRedisService(this, "TestService2",  {networks: [network1], dependsOn: [service1]})
+            new TestRedisService(this, "TestService2", {networks: [network1], dependsOn: [service1]})
         }
     }
 
     new TestComposition("TestComposition", {version: "3.8", name: "TestComposition"})
 
-    compile({
-        outputDir: './src/compiler/__test__/'
+    const resultDir = `${__dirname}/snapshots`
+    const hashBefore = await hashDirectory(resultDir);
+    await compile({
+        outputDir: resultDir
     })
+    const hashAfter = await hashDirectory(resultDir);
 
-    expect(true).toBe(true)
+    expect(hashAfter).toEqual(hashBefore)
 });
