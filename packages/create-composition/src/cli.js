@@ -7,20 +7,37 @@ const projectName = process.argv[2];
 
 const currentDir = process.cwd();
 const projectDir = path.resolve(currentDir, projectName);
-fs.mkdirSync(projectDir);
-
 const templateDir = path.resolve(__dirname, 'template');
-console.log(`HERE: ${templateDir}`)
-fs.cpSync(templateDir, projectDir, { recursive: true });
-fs.renameSync(
-    path.join(projectDir, 'gitignore'),
-    path.join(projectDir, '.gitignore')
-);
 
-fs.renameSync(
-    path.join(projectDir, 'cac.config.template.json'),
-    path.join(projectDir, 'cac.config.json')
-);
+console.log(`Loading default template`)
+
+function createDir(at) {
+    fs.mkdirSync(at);
+}
+
+function rename(from, to) {
+    fs.renameSync(
+        path.join(projectDir, from),
+        path.join(projectDir, to)
+    );
+}
+
+function copy(from, to) {
+    fs.cpSync(from, to, { recursive: true });
+}
+
+function removeFromProject(fileName) {
+    fs.rmSync(
+        path.join(projectDir, fileName),
+    );
+}
+
+createDir(projectDir)
+copy(templateDir, projectDir)
+rename("gitignore", ".gitignore")
+rename("cac.config.template.json", "cac.config.json")
+removeFromProject("yarn.lock")
+
 
 const projectPackageJson = require(path.join(projectDir, 'package.json'));
 
@@ -31,5 +48,5 @@ fs.writeFileSync(
     JSON.stringify(projectPackageJson, null, 2)
 );
 
-console.log('Success! Your new project is ready.');
-console.log(`Created ${projectName} at ${projectDir}`);
+console.log(`${projectName} was initialized successfully!`);
+console.log(`Location: ${projectDir}`);
