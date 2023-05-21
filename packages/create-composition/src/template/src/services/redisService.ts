@@ -7,7 +7,9 @@ export class RedisService extends Service {
             pullPolicy: 'always',
             memReservation: "10M",
             memLimit:  "200M",
-            cpus: "0.2",
+            cpuProps: {
+                cpus: "0.2"
+            },
             restart: "always"
         });
     }
