@@ -2,6 +2,7 @@ import {Composition} from "../composition/composition";
 import {compileKeyValuePair, writeFile} from "./compilerUtils";
 import {compileServices} from "./serviceCompiler";
 import {compileNetworks} from "./networkCompiler";
+import {compileVolumes} from "./volumeCompiler";
 
 interface CompilerProps {
     outputDir: string,
@@ -30,6 +31,9 @@ export const compile = async (compilerProps: CompilerProps) => {
         }
         if (composition.networks && composition.networks.length > 0) {
             resultFileContent += compileNetworks(composition)
+        }
+        if (composition.volumes && composition.volumes.length > 0) {
+            resultFileContent += compileVolumes(composition)
         }
         writeFile({
             fileName: composition.id,

@@ -1,6 +1,18 @@
 import {Composition} from "../composition/composition";
-import {compileKeyValuePair, compileList, compileObject, compileObjectListWithId} from "./compilerUtils";
-import {Service} from "../composition/service";
+import {compileKeyValuePair, compileList, compileObject, compileObjectListWithId, indent} from "./compilerUtils";
+import {Service, ServiceVolume} from "../composition/service";
+import {Volume} from "../composition/volume";
+
+
+const compileServiceVolumes = (serviceVolumes: ServiceVolume[], baseIndentationDepth: number) => {
+    let result = ''
+    serviceVolumes.forEach(entry => {
+        const destinationStr = entry.destination instanceof Volume ? entry.destination.id : entry.destination
+        result += indent(baseIndentationDepth)
+        result += `- ${destinationStr}:${entry.origin}${entry.accessMode ? ":" + entry.accessMode : ""}\n`
+    })
+    return result
+}
 
 const compileService = (service: Service) => {
     let serviceTextBlock = ''
@@ -60,6 +72,9 @@ const compileService = (service: Service) => {
     if (service.memLimit) {
         serviceTextBlock += compileKeyValuePair('mem_limit', service.memLimit, baseIndentation + 1);
     }
+    if (service.command) {
+        serviceTextBlock += compileKeyValuePair('command', service.memLimit, baseIndentation + 1);
+    }
     if (service.networks && service.networks.length > 0) {
         serviceTextBlock += compileKeyValuePair('networks', '', baseIndentation + 1);
         service.networks.forEach(network => {
@@ -70,6 +85,11 @@ const compileService = (service: Service) => {
     if (service.dependsOn && service.dependsOn.length > 0) {
         serviceTextBlock += compileKeyValuePair('depends_on', '', baseIndentation + 1);
         serviceTextBlock += compileObjectListWithId(service.dependsOn, baseIndentation + 2);
+    }
+
+    if (service.volumes && service.volumes.length > 0) {
+        serviceTextBlock += compileKeyValuePair('volumes', '', baseIndentation + 1);
+        serviceTextBlock += compileServiceVolumes(service.volumes, baseIndentation + 2);
     }
     return serviceTextBlock
 }

@@ -1,6 +1,7 @@
 import {Service} from "./service";
 import {Network} from "./network";
 import {App} from "./app";
+import {Volume} from "./volume";
 
 export interface CompositionProps {
     name: string,
@@ -13,6 +14,7 @@ export class Composition {
     id: string;
     services: Service[] = []
     networks: Network[] = []
+    volumes: Volume[] = []
 
     constructor(scope: App, logicalId: string, props: CompositionProps) {
         this.version = props.version

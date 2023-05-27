@@ -15,7 +15,10 @@ export const createDirIfNotExisting = (dirname: string) => {
 }
 
 export const compileKeyValuePair = (key: string, value: string, indentationDepth: number) => {
-    return `${indent(indentationDepth)}${key}: ${value ? `"${value}"` : ''}\n`
+    let result = '';
+    result += indent(indentationDepth)
+    result += `${key}: ${value ? `"${value}"` : ''}\n`
+    return result
 }
 
 export const indent = (indentationDepth: number) => {

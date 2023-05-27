@@ -1,5 +1,6 @@
 import {Composition} from "./composition";
 import {Network} from "./network";
+import {Volume} from "./volume";
 
 interface ServiceCpuProps {
     cpuCount?: string,
@@ -12,6 +13,13 @@ interface ServiceCpuProps {
     cpus?: string,
     cpuSet?: string,
 }
+
+export interface ServiceVolume {
+    origin: string;
+    destination: Volume | string;
+    accessMode?: 'rw' | "ro" | 'z'
+}
+
 export interface ServiceProps {
     image: string,
     pullPolicy?: "always" |  "if-not-present" | "never",
@@ -21,9 +29,11 @@ export interface ServiceProps {
     cpuProps?: ServiceCpuProps
     memReservation?: string,
     memLimit?: string,
+    command?: string,
     dependsOn?: Service[],
     environment?: {[key: string]: string | number | boolean },
     networks?: Network[]
+    volumes?: ServiceVolume[]
 }
 
 export class Service {
@@ -36,9 +46,11 @@ export class Service {
     cpuProps?: ServiceCpuProps;
     memReservation?: string;
     memLimit?: string;
+    command?: string;
     dependsOn?: Service[];
     environment?: {[key: string]: string | number | boolean };
     networks?: Network[]
+    volumes?: ServiceVolume[]
     constructor(scope: Composition, logicalId: string, props: ServiceProps) {
         this.id = `${scope.id}${logicalId}`
         this.image = props.image
@@ -50,8 +62,10 @@ export class Service {
         this.cpuProps = props.cpuProps ?? undefined
         this.memReservation = props.memReservation ?? undefined
         this.memLimit = props.memLimit ?? undefined
+        this.command = props.command ?? undefined
         this.dependsOn = props.dependsOn ?? undefined
         this.networks = props.networks ?? undefined
+        this.volumes = props.volumes ?? undefined
         scope.services.push(this)
     }
 }

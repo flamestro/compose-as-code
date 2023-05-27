@@ -5,6 +5,7 @@ import {Network} from "../../composition/network";
 import {App} from "../../composition/app";
 import * as fs from "fs";
 import {createHash} from "crypto";
+import {Volume} from "../../composition/volume";
 
 async function hashDirectory(dirname) {
     let contentStr = ''
@@ -27,10 +28,17 @@ it('should just run at the moment', async function () {
         }
     }
 
+    class TestVolume extends Volume {
+        constructor(scope, id) {
+            super(scope, id, {});
+        }
+    }
+
     const app = new App("MyApp")
 
     class TestRedisService extends Service {
-        constructor(scope, id, props: { networks: Network[], dependsOn: Service[] }) {
+        constructor(scope, id, props: { networks: Network[], volume?: Volume, dependsOn: Service[] }) {
+            const volumes = props.volume ? [{origin: "/etc/nginx/certs", destination: props.volume}] : []
             super(scope, id, {
                 image: "redis",
                 pullPolicy: 'always',
@@ -47,6 +55,7 @@ it('should just run at the moment', async function () {
                 },
                 restart: "always",
                 networks: props.networks,
+                volumes: volumes,
                 dependsOn: props.dependsOn
             });
         }
@@ -57,7 +66,8 @@ it('should just run at the moment', async function () {
             super(app, id, props);
             const network1 = new TestNetwork(this, "TestNetwork1")
             const network2 = new TestNetwork(this, "TestNetwork2")
-            const service1 = new TestRedisService(this, "TestService1", {networks: [network1, network2], dependsOn: []})
+            const volume = new TestVolume(this, "TestVolume")
+            const service1 = new TestRedisService(this, "TestService1", {networks: [network1, network2], volume: volume, dependsOn: []})
             new TestRedisService(this, "TestService2", {networks: [network1], dependsOn: [service1]})
         }
     }

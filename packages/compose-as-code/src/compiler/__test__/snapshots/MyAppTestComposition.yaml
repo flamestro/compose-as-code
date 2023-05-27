@@ -18,6 +18,8 @@ services:
     networks: 
       MyAppTestCompositionTestNetwork1: 
       MyAppTestCompositionTestNetwork2: 
+    volumes: 
+      - MyAppTestCompositionTestVolume:/etc/nginx/certs
   MyAppTestCompositionTestService2: 
     image: "redis"
     pull_policy: "always"
@@ -39,3 +41,5 @@ services:
 networks: 
   MyAppTestCompositionTestNetwork1: 
   MyAppTestCompositionTestNetwork2: 
+volumes: 
+  MyAppTestCompositionTestVolume: 
