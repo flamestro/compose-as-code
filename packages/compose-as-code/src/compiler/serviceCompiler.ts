@@ -73,7 +73,7 @@ const compileService = (service: Service) => {
         serviceTextBlock += compileKeyValuePair('mem_limit', service.memLimit, baseIndentation + 1);
     }
     if (service.command) {
-        serviceTextBlock += compileKeyValuePair('command', service.memLimit, baseIndentation + 1);
+        serviceTextBlock += compileKeyValuePair('command', service.command, baseIndentation + 1);
     }
     if (service.containerName) {
         serviceTextBlock += compileKeyValuePair('container_name', service.containerName, baseIndentation + 1);
