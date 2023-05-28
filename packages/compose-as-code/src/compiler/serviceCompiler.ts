@@ -78,6 +78,9 @@ const compileService = (service: Service) => {
     if (service.containerName) {
         serviceTextBlock += compileKeyValuePair('container_name', service.containerName, baseIndentation + 1);
     }
+    if (service.entryPoint) {
+        serviceTextBlock += compileKeyValuePair('entrypoint', service.entryPoint, baseIndentation + 1);
+    }
     if (service.networks && service.networks.length > 0) {
         serviceTextBlock += compileKeyValuePair('networks', '', baseIndentation + 1);
         service.networks.forEach(network => {
