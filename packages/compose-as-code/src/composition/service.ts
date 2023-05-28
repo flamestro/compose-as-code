@@ -30,6 +30,7 @@ export interface ServiceProps {
     memReservation?: string,
     memLimit?: string,
     command?: string,
+    containerName?: string,
     dependsOn?: Service[],
     environment?: {[key: string]: string | number | boolean },
     networks?: Network[]
@@ -47,6 +48,7 @@ export class Service {
     memReservation?: string;
     memLimit?: string;
     command?: string;
+    containerName?: string;
     dependsOn?: Service[];
     environment?: {[key: string]: string | number | boolean };
     networks?: Network[]
@@ -62,6 +64,7 @@ export class Service {
         this.cpuProps = props.cpuProps ?? undefined
         this.memReservation = props.memReservation ?? undefined
         this.memLimit = props.memLimit ?? undefined
+        this.containerName = props.containerName ?? undefined
         this.command = props.command ?? undefined
         this.dependsOn = props.dependsOn ?? undefined
         this.networks = props.networks ?? undefined

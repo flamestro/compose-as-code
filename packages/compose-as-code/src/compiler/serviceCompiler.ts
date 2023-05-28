@@ -75,6 +75,9 @@ const compileService = (service: Service) => {
     if (service.command) {
         serviceTextBlock += compileKeyValuePair('command', service.memLimit, baseIndentation + 1);
     }
+    if (service.containerName) {
+        serviceTextBlock += compileKeyValuePair('container_name', service.containerName, baseIndentation + 1);
+    }
     if (service.networks && service.networks.length > 0) {
         serviceTextBlock += compileKeyValuePair('networks', '', baseIndentation + 1);
         service.networks.forEach(network => {
