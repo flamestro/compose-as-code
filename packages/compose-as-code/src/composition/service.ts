@@ -2,7 +2,19 @@ import {Composition} from "./composition";
 import {Network} from "./network";
 import {Volume} from "./volume";
 
-interface ServiceCpuProps {
+export type ServiceVolume = {
+    origin: string;
+    destination: Volume | string;
+    accessMode?: 'rw' | "ro" | 'z'
+}
+
+export type ServiceProps = {
+    image: string,
+    pullPolicy?: "always" |  "if-not-present" | "never",
+    restart?: "always" |  "on-failure" |  "unless-stopped" | "no",
+    expose?: string[],
+    ports?: string[],
+
     cpuCount?: string,
     cpuPercent?: string,
     cpuShares?: string,
@@ -10,23 +22,22 @@ interface ServiceCpuProps {
     cpuQuota?: string,
     cpuRtRuntime?: string,
     cpuRtPeriod?: string,
-    cpus?: string,
     cpuSet?: string,
-}
-
-export interface ServiceVolume {
-    origin: string;
-    destination: Volume | string;
-    accessMode?: 'rw' | "ro" | 'z'
-}
-
-export interface ServiceProps {
-    image: string,
-    pullPolicy?: "always" |  "if-not-present" | "never",
-    restart?: "always" |  "on-failure" |  "unless-stopped" | "no",
-    expose?: string[],
-    ports?: string[],
-    cpuProps?: ServiceCpuProps
+    deviceReadBps?: { path: string, rate: number },
+    deviceWriteBps?:  { path: string, rate: number },
+    deviceReadIops?: { path: string, rate: number },
+    deviceWriteIops?:  { path: string, rate: number },
+    weight?: number,
+    weightDevice?: { path: string, weight: number },
+    capAdd?: string[],
+    capDrop?: string[],
+    cgroupParent?: string,
+    deploy?: {
+        resources?: {
+            limits?: {cpus?: string, memory?: string, pids?: number}
+            reservations?: {cpus?: string, memory?: string}
+        }
+    };
     memReservation?: string,
     memLimit?: string,
     command?: string,
@@ -45,7 +56,29 @@ export class Service {
     restart?: "always" |  "on-failure" |  "unless-stopped" | "no";
     expose?: string[];
     ports?: string[];
-    cpuProps?: ServiceCpuProps;
+    cpuCount?: string;
+    cpuPercent?: string;
+    cpuShares?: string;
+    cpuPeriod?: string;
+    cpuQuota?: string;
+    cpuRtRuntime?: string;
+    cpuRtPeriod?: string;
+    cpuSet?: string;
+    deviceReadBps?: { path: string; rate: number };
+    deviceWriteBps?:  { path: string; rate: number };
+    deviceReadIops?: { path: string; rate: number };
+    deviceWriteIops?:  { path: string; rate: number };
+    weight?: number;
+    weightDevice?: { path: string; weight: number };
+    capAdd?: string[];
+    capDrop?: string[];
+    cgroupParent?: string;
+    deploy?: {
+        resources?: {
+            limits?: {cpus?: string; memory?: string; pids?: number}
+            reservations?: {cpus?: string; memory?: string}
+        }
+    };
     memReservation?: string;
     memLimit?: string;
     command?: string;
@@ -55,23 +88,40 @@ export class Service {
     environment?: {[key: string]: string | number | boolean };
     networks?: Network[]
     volumes?: ServiceVolume[]
+
     constructor(scope: Composition, logicalId: string, props: ServiceProps) {
         this.id = `${scope.id}${logicalId}`
         this.image = props.image
-        this.pullPolicy = props.pullPolicy ?? undefined
-        this.restart = props.restart ?? undefined
-        this.expose = props.expose ?? undefined
-        this.ports = props.ports ?? undefined
-        this.environment = props.environment ?? undefined
-        this.cpuProps = props.cpuProps ?? undefined
-        this.memReservation = props.memReservation ?? undefined
-        this.memLimit = props.memLimit ?? undefined
-        this.containerName = props.containerName ?? undefined
-        this.entryPoint = props.entryPoint ?? undefined
-        this.command = props.command ?? undefined
-        this.dependsOn = props.dependsOn ?? undefined
-        this.networks = props.networks ?? undefined
-        this.volumes = props.volumes ?? undefined
+        this.pullPolicy = props.pullPolicy;
+        this.restart = props.restart;
+        this.expose = props.expose;
+        this.ports = props.ports;
+        this.environment = props.environment;
+        this.cpuCount = props.cpuCount;
+        this.cpuPercent = props.cpuPercent;
+        this.cpuShares = props.cpuShares;
+        this.cpuPeriod = props.cpuPeriod;
+        this.cpuQuota = props.cpuQuota;
+        this.cpuRtRuntime = props.cpuRtRuntime;
+        this.cpuPeriod = props.cpuPeriod;
+        this.deviceReadBps = props.deviceReadBps
+        this.deviceWriteBps = props.deviceWriteBps
+        this.deviceReadIops = props.deviceReadIops
+        this.deviceWriteIops = props.deviceWriteIops
+        this.memReservation = props.memReservation;
+        this.weight = props.weight;
+        this.weightDevice = props.weightDevice;
+        this.capAdd = props.capAdd;
+        this.capDrop = props.capDrop;
+        this.deploy = props.deploy;
+        this.cgroupParent = props.cgroupParent;
+        this.memLimit = props.memLimit;
+        this.containerName = props.containerName;
+        this.entryPoint = props.entryPoint;
+        this.command = props.command;
+        this.dependsOn = props.dependsOn;
+        this.networks = props.networks;
+        this.volumes = props.volumes;
         scope.services.push(this)
     }
 }

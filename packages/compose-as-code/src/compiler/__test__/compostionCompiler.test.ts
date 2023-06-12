@@ -6,7 +6,10 @@ import {App} from "../../composition/app";
 import * as fs from "fs";
 import {createHash} from "crypto";
 import {Volume} from "../../composition/volume";
+import {exec} from "child_process";
+import {promisify} from "util";
 
+const promisifiedExec = promisify(exec)
 async function hashDirectory(dirname) {
     let contentStr = ''
     const files = fs.readdirSync(dirname);
@@ -50,8 +53,12 @@ it('should just run at the moment', async function () {
                     INT: 123,
                 },
                 memReservation: "10M",
-                cpuProps: {
-                    cpus: "0.02"
+                deploy: {
+                    resources: {
+                        limits: {
+                            cpus: "0.02"
+                        }
+                    }
                 },
                 restart: "always",
                 networks: props.networks,
@@ -76,10 +83,14 @@ it('should just run at the moment', async function () {
 
     const resultDir = `${__dirname}/snapshots`
     const hashBefore = await hashDirectory(resultDir);
-    await compile({
-        outputDir: resultDir
+    const files = await compile({
+        outputDir: resultDir,
     })
     const hashAfter = await hashDirectory(resultDir);
 
     expect(hashAfter).toEqual(hashBefore)
+    for (const file of files) {
+        const result = await promisifiedExec(`docker-compose -f ${resultDir}/${file.fileName}.yaml config`)
+        expect(result.stderr).toEqual("")
+    }
 });

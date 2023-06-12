@@ -1,6 +1,6 @@
 import {Composition} from "./composition";
 
-export interface VolumeProps {
+export type VolumeProps = {
 }
 
 export class Volume {

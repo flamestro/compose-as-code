@@ -2,7 +2,7 @@ import fs from "fs";
 
 const INDENTATION_CHARACTER = '  '
 
-interface OutputConfig {
+export interface OutputFile {
     fileName: string,
     outputDir: string,
     content: string,
@@ -14,7 +14,7 @@ export const createDirIfNotExisting = (dirname: string) => {
     }
 }
 
-export const compileKeyValuePair = (key: string, value: string, indentationDepth: number) => {
+export const compileKeyValuePair = (key: string, value: string | number, indentationDepth: number) => {
     let result = '';
     result += indent(indentationDepth)
     result += `${key}: ${value ? `"${value}"` : ''}\n`
@@ -58,7 +58,7 @@ export const compileList = (list: string[], baseIndentationDepth: number) => {
     return result
 }
 
-export const writeFile = (config: OutputConfig) => {
+export const writeFile = (config: OutputFile) => {
     createDirIfNotExisting(config.outputDir)
     const resultFileName = `${config.outputDir}/${config.fileName}.yaml`
     fs.writeFileSync(resultFileName, config.content);

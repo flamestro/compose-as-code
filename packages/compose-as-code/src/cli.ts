@@ -28,7 +28,7 @@ fs.readFile(`${configuration.outputDir}/bundled.js`, {encoding: 'utf-8'}, async 
 
         console.log("Compiling bundle")
         await compile({
-            outputDir: configuration.outputDir
+            outputDir: configuration.outputDir,
         })
     } else {
         console.error(err);

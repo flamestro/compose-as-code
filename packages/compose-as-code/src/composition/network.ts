@@ -1,6 +1,6 @@
 import {Composition} from "./composition";
 
-export interface NetworkProps {
+export type NetworkProps = {
 }
 
 export class Network {

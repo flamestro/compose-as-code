@@ -37,34 +37,99 @@ const compileService = (service: Service) => {
         serviceTextBlock += compileKeyValuePair('environment', '', baseIndentation + 1);
         serviceTextBlock += compileObject(service.environment, baseIndentation + 2)
     }
-    if (service.cpuProps) {
-        if (service.cpuProps.cpus) {
-            serviceTextBlock += compileKeyValuePair('cpus', service.cpuProps.cpus, baseIndentation + 1);
+    if (service.cpuCount) {
+        serviceTextBlock += compileKeyValuePair('cpu_count', service.cpuCount, baseIndentation + 1);
+    }
+    if (service.cpuPercent) {
+        serviceTextBlock += compileKeyValuePair('cpu_percent', service.cpuPercent, baseIndentation + 1);
+    }
+    if (service.cpuShares) {
+        serviceTextBlock += compileKeyValuePair('cpu_shares', service.cpuShares, baseIndentation + 1);
+    }
+    if (service.cpuPeriod) {
+        serviceTextBlock += compileKeyValuePair('cpu_period', service.cpuPeriod, baseIndentation + 1);
+    }
+    if (service.cpuQuota) {
+        serviceTextBlock += compileKeyValuePair('cpu_quota', service.cpuQuota, baseIndentation + 1);
+    }
+    if (service.cpuRtRuntime) {
+        serviceTextBlock += compileKeyValuePair('cpu_rt_runtime', service.cpuRtRuntime, baseIndentation + 1);
+    }
+    if (service.cpuRtPeriod) {
+        serviceTextBlock += compileKeyValuePair('cpu_rt_period', service.cpuRtPeriod, baseIndentation + 1);
+    }
+    if (service.cpuSet) {
+        serviceTextBlock += compileKeyValuePair('cpuset', service.cpuSet, baseIndentation + 1);
+    }
+    if (service.deviceReadBps) {
+        serviceTextBlock += compileKeyValuePair('device_read_bps', '', baseIndentation + 1);
+        serviceTextBlock += compileKeyValuePair('path', service.deviceReadBps.path, baseIndentation + 2);
+        serviceTextBlock += compileKeyValuePair('rate', service.deviceReadBps.rate, baseIndentation + 2);
+    }
+    if (service.deviceWriteBps) {
+        serviceTextBlock += compileKeyValuePair('device_write_bps', '', baseIndentation + 1);
+        serviceTextBlock += compileKeyValuePair('path', service.deviceWriteBps.path, baseIndentation + 2);
+        serviceTextBlock += compileKeyValuePair('rate', service.deviceWriteBps.rate, baseIndentation + 2);
+    }
+    if (service.deviceReadIops) {
+        serviceTextBlock += compileKeyValuePair('device_read_iops', '', baseIndentation + 1);
+        serviceTextBlock += compileKeyValuePair('path', service.deviceReadIops.path, baseIndentation + 2);
+        serviceTextBlock += compileKeyValuePair('rate', service.deviceReadIops.rate, baseIndentation + 2);
+    }
+    if (service.deviceWriteIops) {
+        serviceTextBlock += compileKeyValuePair('device_write_iops', '', baseIndentation + 1);
+        serviceTextBlock += compileKeyValuePair('path', service.deviceWriteIops.path, baseIndentation + 2);
+        serviceTextBlock += compileKeyValuePair('rate', service.deviceWriteIops.rate, baseIndentation + 2);
+    }
+    if (service.weightDevice) {
+        serviceTextBlock += compileKeyValuePair('weight_device', '', baseIndentation + 1);
+        serviceTextBlock += compileKeyValuePair('path', service.weightDevice.path, baseIndentation + 2);
+        serviceTextBlock += compileKeyValuePair('weight', service.weightDevice.weight, baseIndentation + 2);
+    }
+    if (service.weight) {
+        serviceTextBlock += compileKeyValuePair('weight', service.weight, baseIndentation + 1);
+    }
+    if (service.capAdd) {
+        serviceTextBlock += compileKeyValuePair('cap_add', '', baseIndentation + 1);
+        serviceTextBlock += compileList(service.capAdd, baseIndentation + 2);
+    }
+    if (service.capDrop) {
+        serviceTextBlock += compileKeyValuePair('cap_drop', '', baseIndentation + 1);
+        serviceTextBlock += compileList(service.capDrop, baseIndentation + 2);
+    }
+    if (service.deploy) {
+        serviceTextBlock += compileKeyValuePair('deploy', '', baseIndentation + 1);
+        if (service.deploy.resources) {
+            serviceTextBlock += compileKeyValuePair('resources', '', baseIndentation + 2);
+            if (service.deploy.resources.limits) {
+                serviceTextBlock += compileKeyValuePair('limits', '', baseIndentation + 3);
+                if (service.deploy.resources.limits.cpus) {
+                    serviceTextBlock += compileKeyValuePair('cpus', service.deploy.resources.limits.cpus, baseIndentation + 4);
+                }
+                if (service.deploy.resources.limits.memory) {
+                    serviceTextBlock += compileKeyValuePair('memory', service.deploy.resources.limits.memory, baseIndentation + 4);
+                }
+                if (service.deploy.resources.limits.pids) {
+                    serviceTextBlock += compileKeyValuePair('pids', service.deploy.resources.limits.pids, baseIndentation + 4);
+                }
+            }
+            if (service.deploy.resources.reservations) {
+                serviceTextBlock += compileKeyValuePair('reservations', '', baseIndentation + 3);
+                if (service.deploy.resources.reservations.cpus) {
+                    serviceTextBlock += compileKeyValuePair('cpus', service.deploy.resources.reservations.cpus, baseIndentation + 4);
+                }
+                if (service.deploy.resources.reservations.memory) {
+                    serviceTextBlock += compileKeyValuePair('memory', service.deploy.resources.reservations.memory, baseIndentation + 4);
+                }
+            }
         }
-        if (service.cpuProps.cpuCount) {
-            serviceTextBlock += compileKeyValuePair('cpu_count', service.cpuProps.cpus, baseIndentation + 1);
-        }
-        if (service.cpuProps.cpuPercent) {
-            serviceTextBlock += compileKeyValuePair('cpu_percent', service.cpuProps.cpus, baseIndentation + 1);
-        }
-        if (service.cpuProps.cpuShares) {
-            serviceTextBlock += compileKeyValuePair('cpu_shares', service.cpuProps.cpus, baseIndentation + 1);
-        }
-        if (service.cpuProps.cpuPeriod) {
-            serviceTextBlock += compileKeyValuePair('cpu_period', service.cpuProps.cpus, baseIndentation + 1);
-        }
-        if (service.cpuProps.cpuQuota) {
-            serviceTextBlock += compileKeyValuePair('cpu_quota', service.cpuProps.cpus, baseIndentation + 1);
-        }
-        if (service.cpuProps.cpuRtRuntime) {
-            serviceTextBlock += compileKeyValuePair('cpu_rt_runtime', service.cpuProps.cpus, baseIndentation + 1);
-        }
-        if (service.cpuProps.cpuRtPeriod) {
-            serviceTextBlock += compileKeyValuePair('cpu_rt_period', service.cpuProps.cpus, baseIndentation + 1);
-        }
-        if (service.cpuProps.cpuSet) {
-            serviceTextBlock += compileKeyValuePair('cpuset', service.cpuProps.cpus, baseIndentation + 1);
-        }
+    }
+    if (service.capDrop) {
+        serviceTextBlock += compileKeyValuePair('cap_drop', '', baseIndentation + 1);
+        serviceTextBlock += compileList(service.capDrop, baseIndentation + 2);
+    }
+    if (service.cgroupParent) {
+        serviceTextBlock += compileKeyValuePair('cgroup_parent', service.cgroupParent, baseIndentation + 1);
     }
     if (service.memReservation) {
         serviceTextBlock += compileKeyValuePair('mem_reservation', service.memReservation, baseIndentation + 1);

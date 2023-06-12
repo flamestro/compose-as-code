@@ -3,7 +3,7 @@ import {Network} from "./network";
 import {App} from "./app";
 import {Volume} from "./volume";
 
-export interface CompositionProps {
+export type CompositionProps = {
     name: string,
     version: "3.8"
 }

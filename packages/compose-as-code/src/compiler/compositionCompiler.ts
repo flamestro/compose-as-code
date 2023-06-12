@@ -1,11 +1,11 @@
 import {Composition} from "../composition/composition";
-import {compileKeyValuePair, writeFile} from "./compilerUtils";
+import {compileKeyValuePair, OutputFile, writeFile} from "./compilerUtils";
 import {compileServices} from "./serviceCompiler";
 import {compileNetworks} from "./networkCompiler";
 import {compileVolumes} from "./volumeCompiler";
 
 interface CompilerProps {
-    outputDir: string,
+    outputDir: string
 }
 
 const compileCompositionMetaData = (composition: Composition) => {
@@ -20,9 +20,10 @@ export const compile = async (compilerProps: CompilerProps) => {
     const app = globalThis.cacStore.app
     if (!app) {
         console.error("No app was defined. Without an app there is no composition possible.")
-        return -1;
+        return Promise.reject();
     }
     console.log(`Found ${app.compositions.length} compositions`)
+    const resultingFiles: OutputFile[] = []
     for (const composition of app.compositions) {
         let resultFileContent = ''
         resultFileContent += compileCompositionMetaData(composition)
@@ -35,12 +36,15 @@ export const compile = async (compilerProps: CompilerProps) => {
         if (composition.volumes && composition.volumes.length > 0) {
             resultFileContent += compileVolumes(composition)
         }
-        writeFile({
+        resultingFiles.push({
             fileName: composition.id,
             outputDir: compilerProps.outputDir,
-            content: resultFileContent
+            content: resultFileContent,
         })
     }
-    return 0
+    resultingFiles.forEach(
+        file => writeFile(file)
+    )
+    return Promise.resolve(resultingFiles)
 }
 
