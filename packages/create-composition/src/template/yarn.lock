@@ -117,10 +117,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.2.1.tgz#de559d4b33be9a808fd43372ccee822c70f39704"
   integrity sha512-DqJociPbZP1lbZ5SQPk4oag6W7AyaGMO6gSfRwq3PWl4PXTwJpRQJhDq4W0kzrg3w6tJ1SwlvGZ5uKFHY13LIg==
 
-compose-as-code@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/compose-as-code/-/compose-as-code-0.2.0.tgz#0bc6faddc7f0b8d77e0fd954c47a2fb5169956b6"
-  integrity sha512-V4Yiv7KfINQosh+quDXK5sPIEp4jOJsHwtIvnK+az0zLLaOgrZv5rzfpgn7wddOPvhjytQ2lEK3zzSEuxTR41w==
+compose-as-code@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/compose-as-code/-/compose-as-code-0.5.2.tgz#de13531c64c615f5e4b431ad9db3a9e19cfc6f49"
+  integrity sha512-H4erA9sJXR3KdTQTYfjtUvi753iSXG4/68ha6Oo7IIdqYgc7JRzW8kLlPSxtR44P3NPdE2OK92TwM7xQYvvF+w==
   dependencies:
     "@types/node" "^20.2.1"
     esbuild "^0.17.19"

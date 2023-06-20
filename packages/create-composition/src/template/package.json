@@ -5,11 +5,11 @@
   "author": "",
   "main": "index.ts",
   "scripts": {
-    "conduct": "conduct"
+    "conduct": "yarn tsc && conduct"
   },
   "dependencies": {
     "@types/node": "^20.2.1",
-    "compose-as-code": "^0.5.0"
+    "compose-as-code": "^0.5.2"
   },
   "devDependencies": {
     "typescript": "^5.0.4"
