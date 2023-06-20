@@ -34,7 +34,7 @@ export const compileObject = (obj: object, baseIndentationDepth: number) => {
     Object.keys(obj).forEach(
         (key) => {
             const value = obj[key]
-            result += `${indent(baseIndentationDepth)}${key}: ${value}\n`
+            result += `${indent(baseIndentationDepth)}${key}: "${value}"\n`
         }
     )
     return result

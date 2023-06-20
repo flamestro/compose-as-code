@@ -44,7 +44,7 @@ export type ServiceProps = {
     containerName?: string,
     entryPoint?: string,
     dependsOn?: Service[],
-    environment?: {[key: string]: string | number | boolean },
+    environment?: {[key: string]: string },
     networks?: Network[]
     volumes?: ServiceVolume[]
 }
@@ -85,7 +85,7 @@ export class Service {
     containerName?: string;
     entryPoint?: string;
     dependsOn?: Service[];
-    environment?: {[key: string]: string | number | boolean };
+    environment?: {[key: string]: string };
     networks?: Network[]
     volumes?: ServiceVolume[]
 

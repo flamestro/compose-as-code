@@ -24,7 +24,7 @@ async function hashDirectory(dirname) {
         .digest('hex');
 }
 
-it('should just run at the moment', async function () {
+it('should create a valid docker compose file', async function () {
     class TestNetwork extends Network {
         constructor(scope, id) {
             super(scope, id, {});
@@ -48,9 +48,8 @@ it('should just run at the moment', async function () {
                 expose: ['9080'],
                 ports: ['19132:19132/udp'],
                 environment: {
-                    BOOL: true,
+                    BOOL: "true",
                     STR: "Test",
-                    INT: 123,
                 },
                 memReservation: "10M",
                 deploy: {
@@ -90,7 +89,7 @@ it('should just run at the moment', async function () {
 
     expect(hashAfter).toEqual(hashBefore)
     for (const file of files) {
-        const result = await promisifiedExec(`docker-compose -f ${resultDir}/${file.fileName}.yaml config`)
+        const result = await promisifiedExec(`docker compose -f ${resultDir}/${file.fileName}.yaml config`)
         expect(result.stderr).toEqual("")
     }
 });
