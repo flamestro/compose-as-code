@@ -13,6 +13,17 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
+      - name: Install Dependencies 🗂️
+        run: cd packages && cd compose-as-code && yarn install --frozen-lockfile
+      - name: Test 🧪
+        run: cd packages && cd compose-as-code && yarn test
+      - name: tsc 🏗️
+        run: cd packages && cd compose-as-code && yarn tsc
+      - name: Release 🚀
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: cd packages && cd compose-as-code && npx semantic-release
       - run: cd packages && cd compose-as-code && yarn release:ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

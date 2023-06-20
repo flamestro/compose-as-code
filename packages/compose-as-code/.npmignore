@@ -10,3 +10,4 @@ yarn.lock
 yarn-error.log
 cac.config.json
 .github
+release.config.js
