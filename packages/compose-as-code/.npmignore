@@ -1,8 +1,7 @@
 node_modules
 out
 .idea
-*.test.ts
-__test__
+src
 .gitignore
 babel.config.js
 README.md
