@@ -5,9 +5,6 @@ import * as esbuild from 'esbuild'
 
 import {compile} from "./compiler/compositionCompiler";
 import {loadConfiguration} from "./configuration/configLoader";
-import {execSync} from "child_process";
-
-execSync("npm run tsc")
 
 console.log("Loading Config 🗂️")
 const configuration = loadConfiguration()
