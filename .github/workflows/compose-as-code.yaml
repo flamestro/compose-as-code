@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'packages/compose-as-code/*'
+      - 'packages/compose-as-code/**'
 jobs:
   publish:
     runs-on: ubuntu-latest

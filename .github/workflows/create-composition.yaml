@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'packages/create-composition/*'
+      - 'packages/create-composition/**'
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -13,6 +13,12 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: cd packages && cd create-composition && yarn release:ci
+      - name: Install Dependencies 🗂️
+        run: cd packages && cd compose-as-code && yarn install --frozen-lockfile
+      - name: tsc 🏗️
+        run: cd packages && cd compose-as-code && yarn tsc
+      - name: Release 🚀
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: cd packages && cd compose-as-code && npx semantic-release
