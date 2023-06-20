@@ -10,8 +10,8 @@ services:
     ports: 
       - 19132:19132/udp
     environment: 
-      BOOL: "true"
-      STR: "Test"
+      BOOL: true
+      STR: Test
     deploy: 
       resources: 
         limits: 
@@ -31,8 +31,8 @@ services:
     ports: 
       - 19132:19132/udp
     environment: 
-      BOOL: "true"
-      STR: "Test"
+      BOOL: true
+      STR: Test
     deploy: 
       resources: 
         limits: 
