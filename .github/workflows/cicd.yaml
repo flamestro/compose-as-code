@@ -39,12 +39,21 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Install Dependencies 🗂️
+        run: yarn install --frozen-lockfile
+
       - name: Setup Git
         run: git config --global user.email "noreplyflamestro@gmail.com" && git config --global user.name "flamestro"
+
+      - name: Bump Version 🚀
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx lerna version --yes --create-release=github --conventional-commits --push --message "chore(release) [ci skip]"
 
       - name: Publish Packages 🚀
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx lerna publish --yes
+        run: npx lerna publish from-package --yes
