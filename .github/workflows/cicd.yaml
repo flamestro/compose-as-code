@@ -41,4 +41,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx --no-install lerna version --github-release --push --message Release [ci skip]
+        run: npx --no-install lerna version --yes --github-release --push --message Release [ci skip]
+
+      - name: Release 🚀
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx --no-install lerna publish from-git --yes
