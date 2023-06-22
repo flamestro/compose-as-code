@@ -7,7 +7,7 @@ import {Volume} from "../composition/volume";
 const compileServiceVolumes = (serviceVolumes: ServiceVolume[], baseIndentationDepth: number) => {
     let result = ''
     serviceVolumes.forEach(entry => {
-        const destinationStr = entry.destination instanceof Volume ? entry.destination.id : entry.destination
+        const destinationStr = typeof entry.destination === "string" ? entry.destination : entry.destination.id
         result += indent(baseIndentationDepth)
         result += `- ${destinationStr}:${entry.origin}${entry.accessMode ? ":" + entry.accessMode : ""}\n`
     })
