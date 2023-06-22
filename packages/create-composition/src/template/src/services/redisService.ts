@@ -1,16 +1,28 @@
-import {Service} from "compose-as-code";
+import {Composition, Network, Service, Volume} from "compose-as-code";
 
+interface Props {
+    volume: Volume,
+    network: Network
+}
 export class RedisService extends Service {
-    constructor(scope, id) {
+    constructor(scope: Composition, id: string, props: Props) {
         super(scope, id, {
             image: "redis",
             pullPolicy: 'always',
             memReservation: "10M",
             memLimit:  "200M",
-            cpuProps: {
-                cpus: "0.2"
+            deploy: {
+                resources: {
+                    limits: {
+                        cpus: "0.2"
+                    }
+                }
             },
-            restart: "always"
+            restart: "always",
+            volumes: [
+                {origin: "/example", destination: props.volume}
+            ],
+            networks: [props.network]
         });
     }
 }
