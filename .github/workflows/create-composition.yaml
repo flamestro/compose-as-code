@@ -4,8 +4,7 @@ on:
     branches: [main]
     paths:
       - 'packages/create-composition/**'
-    paths-ignore:
-      - package.json
+
 jobs:
   publish:
     runs-on: ubuntu-latest

@@ -4,8 +4,7 @@ on:
     branches: [main]
     paths:
       - 'packages/compose-as-code/**'
-    paths-ignore:
-      - package.json
+
 jobs:
   publish:
     runs-on: ubuntu-latest
