@@ -43,7 +43,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx lerna version --yes --github-release --push --message Release [ci skip]
+        run: npx lerna version --yes --conventional-commits --changelog-preset --github-release --push --message Release [ci skip]
 
       - name: Release 🚀
         env:
