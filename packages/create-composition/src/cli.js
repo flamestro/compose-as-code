@@ -35,7 +35,6 @@ function removeFromProject(fileName) {
 createDir(projectDir)
 copy(templateDir, projectDir)
 rename("gitignore", ".gitignore")
-rename("cac.config.template.json", "cac.config.json")
 removeFromProject("yarn.lock")
 
 

@@ -6,5 +6,6 @@ babel.config.js
 tsconfig.json
 yarn.lock
 yarn-error.log
-cac.config.json
 .github
+dist
+lib
