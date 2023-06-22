@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.7 (2023-06-22)
+
+
+### Bug Fixes
+
+* **all:** try .npmrc on publish ([b980fd3](https://github.com/flamestro/compose-as-code/commit/b980fd3b5a4c2be85b6b11dc9d4ed2ed3740afc7))
+
+
+
+
+
 ## 1.2.6 (2023-06-22)
 
 
