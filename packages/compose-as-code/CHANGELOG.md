@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.1.6 (2023-06-22)
+
+
+### Bug Fixes
+
+* **all:** try with --no-verify-access ([31c8958](https://github.com/flamestro/compose-as-code/commit/31c89585bef432e594a924e25627d9f602453d91))
+
+
+
+
+
 ## 1.1.5 (2023-06-22)
 
 
