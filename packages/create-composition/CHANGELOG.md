@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.8 (2023-06-22)
+
+
+### Bug Fixes
+
+* **all:** Node_auth_token to publish packages ([e17fa1c](https://github.com/flamestro/compose-as-code/commit/e17fa1cf13e13c5f9cc17ac5d8fcae79756b5f5d))
+
+
+
+
+
 ## 1.2.7 (2023-06-22)
 
 
