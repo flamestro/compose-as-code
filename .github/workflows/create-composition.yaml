@@ -16,8 +16,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install Dependencies 🗂️
         run: cd packages && cd create-composition && yarn install --frozen-lockfile
-      - name: tsc 🏗️
-        run: cd packages && cd create-composition && yarn tsc
       - name: Release 🚀
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
