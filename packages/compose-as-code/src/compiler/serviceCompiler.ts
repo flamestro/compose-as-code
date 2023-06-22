@@ -1,15 +1,14 @@
 import {Composition} from "../composition/composition";
 import {compileKeyValuePair, compileList, compileObject, compileObjectListWithId, indent} from "./compilerUtils";
 import {Service, ServiceVolume} from "../composition/service";
-import {Volume} from "../composition/volume";
 
 
 const compileServiceVolumes = (serviceVolumes: ServiceVolume[], baseIndentationDepth: number) => {
     let result = ''
     serviceVolumes.forEach(entry => {
-        const destinationStr = typeof entry.destination === "string" ? entry.destination : entry.destination.id
+        const extractedDestination = typeof entry.destination === "string" ? entry.destination : entry.destination.id
         result += indent(baseIndentationDepth)
-        result += `- ${destinationStr}:${entry.origin}${entry.accessMode ? ":" + entry.accessMode : ""}\n`
+        result += `- ${extractedDestination}:${entry.origin}${entry.accessMode ? ":" + entry.accessMode : ""}\n`
     })
     return result
 }
