@@ -42,13 +42,7 @@ jobs:
       - name: Setup Git
         run: git config --global user.email "noreplyflamestro@gmail.com" && git config --global user.name "flamestro"
 
-      - name: Bump Version 🚀
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx lerna version patch --yes --create-release=github --conventional-commits --push --message "Release [ci skip]"
-
-      - name: Release Packages 🚀
+      - name: Publish Packages 🚀
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
