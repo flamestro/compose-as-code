@@ -43,7 +43,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx lerna version patch --yes --create-release=github --push --message "Release [ci skip]"
+        run: npx lerna version patch --yes --create-release=github --conventional-commits --push --message "Release [ci skip]"
 
       - name: Release Packages 🚀
         env:
