@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.5 (2023-06-22)
+
+
+### Bug Fixes
+
+* **all:** try again in npm_token ([03d5d2b](https://github.com/flamestro/compose-as-code/commit/03d5d2b5ab8bb45aa824404ddd01b9e4e62ac6ac))
+
+
+
+
+
 ## 1.2.4 (2023-06-22)
 
 
