@@ -15,6 +15,9 @@ export class RedisService extends Service {
                 resources: {
                     limits: {
                         cpus: "0.2"
+                    },
+                    reservations: {
+                        cpus: "0.01"
                     }
                 }
             },
