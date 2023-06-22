@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.2.0 (2023-06-22)
+
+
+### Features
+
+* try bumping feat ([d87f4a5](https://github.com/flamestro/compose-as-code/commit/d87f4a599285dbcb666f4ff0570f88446e32b0ba))
+
+
+
+
+
 ## 1.1.9 (2023-06-22)
 
 
