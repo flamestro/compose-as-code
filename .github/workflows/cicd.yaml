@@ -1,0 +1,46 @@
+name: Publish compose-as-code to npmjs
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/compose-as-code/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: [ compose-as-code, create-composition ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies ${{ matrix.package }}🗂️
+        run: yarn install --frozen-lockfile
+        working-directory: ./packages/${{ matrix.package }}
+
+      - name: Test ${{ matrix.package }}🧪
+        run: yarn test
+        working-directory: ./packages/${{ matrix.package }}
+
+      - name: tsc ${{ matrix.package }}🏗️
+        run: yarn tsc
+        working-directory: ./packages/compose-as-code
+
+  release:
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Release 🚀
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx --no-install lerna version --github-release --push --message Release [ci skip]
