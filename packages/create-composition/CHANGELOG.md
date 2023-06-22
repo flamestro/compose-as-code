@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.9 (2023-06-22)
+
+
+### Bug Fixes
+
+* try again ([0f9309e](https://github.com/flamestro/compose-as-code/commit/0f9309e46f146466ad0287241054659fd13bda9c))
+
+
+
+
+
 ## 1.2.8 (2023-06-22)
 
 
