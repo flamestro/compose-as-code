@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import * as fs from 'fs';
-import * as path from 'path';
+const fs =  require('fs');
+const path =  require('path');
 
 const projectName = process.argv[2];
 
