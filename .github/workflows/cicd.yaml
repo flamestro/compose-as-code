@@ -38,6 +38,7 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
+          token: ${{ secrets.NPM_TOKEN }}
 
       - name: Setup Git
         run: git config --global user.email "noreplyflamestro@gmail.com" && git config --global user.name "flamestro"
