@@ -39,13 +39,13 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Release 🚀
+      - name: Bump Version 🚀
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx lerna version patch --yes --conventional-commits --changelog-preset --github-release --push --message Release [ci skip]
+        run: npx lerna version patch --yes --github-release --push --message Release [ci skip]
 
-      - name: Release 🚀
+      - name: Release Packages 🚀
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
