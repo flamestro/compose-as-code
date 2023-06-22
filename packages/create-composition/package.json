@@ -26,6 +26,7 @@
     "@types/node": "^20.2.1"
   },
   "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
     "semantic-release": "^21.0.5"
   }
 }
