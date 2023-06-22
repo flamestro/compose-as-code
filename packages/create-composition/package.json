@@ -25,5 +25,6 @@
   "dependencies": {
     "@types/node": "^20.2.1",
     "typescript": "^5.1.3"
-  }
+  },
+  "gitHead": "fe680bdbd4d75a29ad005143c38c65fdd3b3b264"
 }
