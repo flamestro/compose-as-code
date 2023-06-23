@@ -33,7 +33,6 @@ export type ServiceProps = {
     capDrop?: string[],
     cgroupParent?: string,
     deploy?: {
-        mode?: "global" | "replicated",
         resources?: {
             limits?: {cpus?: string, memory?: string, pids?: number}
             reservations?: {cpus?: string, memory?: string}
@@ -75,7 +74,6 @@ export class Service {
     capDrop?: string[];
     cgroupParent?: string;
     deploy?: {
-        mode?: "global" | "replicated",
         resources?: {
             limits?: {cpus?: string; memory?: string; pids?: number}
             reservations?: {cpus?: string; memory?: string}

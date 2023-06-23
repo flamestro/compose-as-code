@@ -98,9 +98,6 @@ const compileService = (service: Service) => {
     }
     if (service.deploy) {
         serviceTextBlock += compileKeyValuePair('deploy', '', baseIndentation + 1);
-        if (service.deploy.mode) {
-            serviceTextBlock += compileKeyValuePair('mode', service.deploy.mode, baseIndentation + 2);
-        }
         if (service.deploy.resources) {
             serviceTextBlock += compileKeyValuePair('resources', '', baseIndentation + 2);
             if (service.deploy.resources.limits) {
