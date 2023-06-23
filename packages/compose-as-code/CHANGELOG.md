@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.4 (2023-06-23)
+
+
+### Bug Fixes
+
+* Revert "fix: Revert "feat: add service configuration for deploy.mode"" ([6b5fecd](https://github.com/flamestro/compose-as-code/commit/6b5fecda05ef2d54658434cd88bf6a5be0a9791c))
+
+
+
+
+
 ## 1.2.3 (2023-06-23)
 
 **Note:** Version bump only for package compose-as-code
