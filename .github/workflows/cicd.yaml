@@ -34,10 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
-
-      - name: sync commits and tags
-        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+          fetch-depth: "0"
 
       - uses: actions/setup-node@v3
         with:
@@ -48,7 +45,7 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
-          git fetch --tags
+          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
       - name: Publish Packages 🚀
         env:
