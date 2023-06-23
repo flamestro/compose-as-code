@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.14](https://github.com/flamestro/compose-as-code/compare/compose-as-code@1.2.13...compose-as-code@1.2.14) (2023-06-23)
+
+
+### Bug Fixes
+
+* another one ([4b2c8e2](https://github.com/flamestro/compose-as-code/commit/4b2c8e28121ad6aebd02d54ea60a6271231a2f54))
+
+
+
+
+
 ## [1.2.13](https://github.com/flamestro/compose-as-code/compare/compose-as-code@1.2.12...compose-as-code@1.2.13) (2023-06-23)
 
 **Note:** Version bump only for package compose-as-code
