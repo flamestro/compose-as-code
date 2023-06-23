@@ -47,3 +47,4 @@ networks:
   MyAppTestCompositionTestNetwork2: 
 volumes: 
   MyAppTestCompositionTestVolume: 
+    driver: "overlay"

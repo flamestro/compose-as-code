@@ -33,7 +33,9 @@ it('should create a valid docker compose file', async function () {
 
     class TestVolume extends Volume {
         constructor(scope, id) {
-            super(scope, id, {});
+            super(scope, id, {
+                driver: "overlay"
+            });
         }
     }
 

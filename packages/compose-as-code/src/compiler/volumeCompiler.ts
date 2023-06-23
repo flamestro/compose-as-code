@@ -6,6 +6,9 @@ const compileVolume = (volume: Volume) => {
     let volumeTextBlock = ''
     const baseIndentation = 1
     volumeTextBlock += compileKeyValuePair(volume.id, '', baseIndentation);
+    if(volume.driver) {
+        volumeTextBlock += compileKeyValuePair("driver", volume.driver, baseIndentation + 1);
+    }
     return volumeTextBlock
 }
 
