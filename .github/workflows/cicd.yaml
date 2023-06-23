@@ -24,11 +24,6 @@ jobs:
         run: yarn test
         working-directory: ./packages/${{ matrix.package }}
 
-#      - name: Tsc ${{ matrix.package }}🧪
-#        if: ${{ matrix.package }} != 'create-composition'
-#        run: yarn tsc
-#        working-directory: ./packages/${{ matrix.package }}
-
       - name: Format Check ${{ matrix.package }} 📄
         run: yarn format:check
         working-directory: ./packages/${{ matrix.package }}
