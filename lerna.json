@@ -11,7 +11,13 @@
       "createRelease": "github",
       "push": true,
       "yes": true,
-      "message": "chore(release): publish [skip ci]"
+      "message": "chore(release): publish [skip ci]",
+      "ignoreChanges": [
+        "**/node_modules/**",
+        "**/*.md",
+        "**/dist/**",
+        "**/lib/**"
+      ]
     }
   }
 }
