@@ -4,10 +4,10 @@
   "packages": [
     "packages/*"
   ],
+  "npmClient": "yarn",
   "command": {
     "version": {
       "allowBranch": "main",
-      "since": "main",
       "conventionalCommits": true,
       "createRelease": "github",
       "push": true,
