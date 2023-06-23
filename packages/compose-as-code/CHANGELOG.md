@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.5 (2023-06-23)
+
+
+### Bug Fixes
+
+* change lerna.json ([e1d3365](https://github.com/flamestro/compose-as-code/commit/e1d336548f37af2d67f37328ac7bb1dc7bf31778))
+
+
+
+
+
 ## 1.2.4 (2023-06-23)
 
 
