@@ -6,7 +6,6 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "conventional-changelog-conventionalcommits": "^6.1.0",
     "lerna": "^7.0.2"
   }
 }
