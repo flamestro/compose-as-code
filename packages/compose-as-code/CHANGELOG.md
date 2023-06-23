@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.6](https://github.com/flamestro/compose-as-code/compare/compose-as-code@1.2.5...compose-as-code@1.2.6) (2023-06-23)
+
+
+### Bug Fixes
+
+* change lerna.json ([e7dc919](https://github.com/flamestro/compose-as-code/commit/e7dc91982bd9dcb76714d95208cf725f65fe4734))
+* test ([f667728](https://github.com/flamestro/compose-as-code/commit/f667728fde931aad799487f5107418df748585f5))
+* try again ([ed80e27](https://github.com/flamestro/compose-as-code/commit/ed80e27bc6e4ffcb598cd8fb82f62fea7499b58b))
+* try again ([68e6371](https://github.com/flamestro/compose-as-code/commit/68e637140c940c7f95413089a72a43ffd07a505e))
+
+
+
+
+
 ## 1.2.5 (2023-06-23)
 
 
