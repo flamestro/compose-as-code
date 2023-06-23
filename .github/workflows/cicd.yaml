@@ -34,6 +34,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: sync commits and tags
+        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
       - uses: actions/setup-node@v3
         with:
           node-version: '18.x'
