@@ -10,8 +10,7 @@
       "allowBranch": "main",
       "conventionalCommits": true,
       "createRelease": "github",
-      "push": true,
-      "yes": true,
+      "push": false,
       "message": "chore(release): publish [skip ci]",
       "ignoreChanges": [
         "**/node_modules/**",

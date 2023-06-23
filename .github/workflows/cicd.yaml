@@ -46,12 +46,7 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor}}@users.noreply.github.com"
-
-      - name: Bump Version 🚀
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx lerna version
+          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
       - name: Publish Packages 🚀
         env:
