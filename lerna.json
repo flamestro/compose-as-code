@@ -9,6 +9,7 @@
     "publish": {
       "allowBranch": "main",
       "conventionalCommits": true,
+      "createRelease": "github",
       "push": true,
       "yes": true,
       "message": "chore(release): publish [skip ci]",
