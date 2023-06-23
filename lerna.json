@@ -12,6 +12,7 @@
       "createRelease": "github",
       "push": true,
       "yes": true,
+      "since": "main",
       "message": "chore(release): publish [skip ci]",
       "ignoreChanges": [
         "**/node_modules/**",
