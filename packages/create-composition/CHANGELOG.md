@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.12](https://github.com/flamestro/compose-as-code/compare/create-composition@1.3.11...create-composition@1.3.12) (2023-06-23)
+
+
+### Bug Fixes
+
+* add prettier and eslint ([3ead1a2](https://github.com/flamestro/compose-as-code/commit/3ead1a29cf49e50a9beb7968c439e82af22b3a88))
+
+
+
+
+
 ## [1.3.11](https://github.com/flamestro/compose-as-code/compare/create-composition@1.3.10...create-composition@1.3.11) (2023-06-23)
 
 **Note:** Version bump only for package create-composition
