@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/flamestro/compose-as-code/compare/compose-as-code@1.2.14...compose-as-code@1.3.0) (2023-06-23)
+
+
+### Bug Fixes
+
+* add prettier and eslint ([3ead1a2](https://github.com/flamestro/compose-as-code/commit/3ead1a29cf49e50a9beb7968c439e82af22b3a88))
+* add type for service id ([d1beae2](https://github.com/flamestro/compose-as-code/commit/d1beae2e721ccdb75443b5c3ebf2b030468d4f7f))
+* another one ([4b2c8e2](https://github.com/flamestro/compose-as-code/commit/4b2c8e28121ad6aebd02d54ea60a6271231a2f54))
+* remove props from network ([6c8ccc3](https://github.com/flamestro/compose-as-code/commit/6c8ccc3c82634140c9e2823fc73bcc9ea2032565))
+
+
+### Features
+
+* add compilation for driver property in volume.ts ([6db1bfd](https://github.com/flamestro/compose-as-code/commit/6db1bfd308c97342364a710ff0745741dbc7fe6c))
+* remove unused appProps ([36004d2](https://github.com/flamestro/compose-as-code/commit/36004d2f2ac8ec3a0ea2b91afb7960088fb2bdc3))
+
+
+
+
+
 ## [1.2.14](https://github.com/flamestro/compose-as-code/compare/compose-as-code@1.2.13...compose-as-code@1.2.14) (2023-06-23)
 
 
