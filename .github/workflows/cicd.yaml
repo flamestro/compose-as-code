@@ -24,9 +24,18 @@ jobs:
         run: yarn test
         working-directory: ./packages/${{ matrix.package }}
 
-      - name: tsc ${{ matrix.package }}🏗️
+      - name: Tsc ${{ matrix.package }}🧪
+        if: ${{ matrix.package }} != 'create-composition'
         run: yarn tsc
-        working-directory: ./packages/compose-as-code
+        working-directory: ./packages/${{ matrix.package }}
+
+      - name: Format Check ${{ matrix.package }} 📄
+        run: yarn format:check
+        working-directory: ./packages/${{ matrix.package }}
+
+      - name: Lint Check ${{ matrix.package }}
+        run: yarn lint
+        working-directory: ./packages/${{ matrix.package }}
 
   release:
     runs-on: ubuntu-latest

@@ -1,10 +1,10 @@
-import {Composition} from "./composition";
+import { Composition } from './composition';
 
 export class Network {
-    id;
-    constructor(scope: Composition, logicalId: string) {
-        this.id = `${scope.id}${logicalId}`
+  id;
+  constructor(scope: Composition, logicalId: string) {
+    this.id = `${scope.id}${logicalId}`;
 
-        scope.networks.push(this)
-    }
+    scope.networks.push(this);
+  }
 }

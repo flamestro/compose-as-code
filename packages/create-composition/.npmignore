@@ -9,3 +9,5 @@ yarn-error.log
 .github
 dist
 lib
+.eslintrc
+.eslintignore

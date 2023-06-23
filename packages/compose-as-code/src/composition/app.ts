@@ -1,19 +1,19 @@
-import {Composition} from "./composition";
+import { Composition } from './composition';
 
 globalThis.cacStore = {
-    app: undefined
-}
+  app: undefined,
+};
 
 export class App {
-    id: string;
-    compositions: Composition[] = [];
+  id: string;
+  compositions: Composition[] = [];
 
-    constructor(id: string) {
-        this.id = id;
-    }
+  constructor(id: string) {
+    this.id = id;
+  }
 
-    register(composition: Composition) {
-        this.compositions.push(composition);
-        globalThis.cacStore.app = this;
-    }
+  register(composition: Composition) {
+    this.compositions.push(composition);
+    globalThis.cacStore.app = this;
+  }
 }
