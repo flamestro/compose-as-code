@@ -51,7 +51,7 @@ export type ServiceProps = {
 }
 
 export class Service {
-    id;
+    id: string;
     image: string;
     pullPolicy?: "always" |  "if-not-present" | "never";
     restart?: "always" |  "on-failure" |  "unless-stopped" | "no";
