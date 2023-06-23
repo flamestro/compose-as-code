@@ -1,11 +1,8 @@
 import {Composition} from "./composition";
 
-export type NetworkProps = {
-}
-
 export class Network {
     id;
-    constructor(scope: Composition, logicalId: string, props: NetworkProps) {
+    constructor(scope: Composition, logicalId: string) {
         this.id = `${scope.id}${logicalId}`
 
         scope.networks.push(this)

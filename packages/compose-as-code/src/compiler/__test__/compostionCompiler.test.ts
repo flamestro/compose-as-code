@@ -27,7 +27,7 @@ async function hashDirectory(dirname) {
 it('should create a valid docker compose file', async function () {
     class TestNetwork extends Network {
         constructor(scope, id) {
-            super(scope, id, {});
+            super(scope, id);
         }
     }
 
