@@ -6,11 +6,12 @@
   ],
   "npmClient": "yarn",
   "command": {
-    "version": {
+    "publish": {
       "allowBranch": "main",
       "conventionalCommits": true,
       "createRelease": "github",
-      "push": false,
+      "push": true,
+      "yes": true,
       "message": "chore(release): publish [skip ci]",
       "ignoreChanges": [
         "**/node_modules/**",
