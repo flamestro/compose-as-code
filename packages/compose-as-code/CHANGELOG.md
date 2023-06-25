@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/flamestro/compose-as-code/compare/compose-as-code@1.3.2...compose-as-code@1.4.0) (2023-06-25)
+
+
+### Features
+
+* **CaC:** add deploy.labels to service and service compiler ([#2](https://github.com/flamestro/compose-as-code/issues/2)) ([06ee9cf](https://github.com/flamestro/compose-as-code/commit/06ee9cf85214b6f1395a0436df857cac3b0ed0f7))
+
+
+
+
+
 ## [1.3.2](https://github.com/flamestro/compose-as-code/compare/compose-as-code@1.3.1...compose-as-code@1.3.2) (2023-06-23)
 
 **Note:** Version bump only for package compose-as-code
