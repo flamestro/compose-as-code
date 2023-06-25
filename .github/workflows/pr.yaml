@@ -1,6 +1,6 @@
 name: Publish compose-as-code to npmjs
 on:
-  push:
+  pull_request:
     branches: [main]
 
 jobs:
@@ -32,28 +32,3 @@ jobs:
         run: yarn lint
         working-directory: ./packages/${{ matrix.package }}
 
-  release:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: "0"
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18.x'
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Setup Git
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor}}@users.noreply.github.com"
-          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-
-      - name: Publish Packages 🚀
-        env:
-          CI: true
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx lerna publish
