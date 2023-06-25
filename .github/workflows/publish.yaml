@@ -4,6 +4,34 @@ on:
     branches: [main]
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: [ compose-as-code, create-composition ]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies ${{ matrix.package }}🗂️
+        run: yarn install --frozen-lockfile
+        working-directory: ./packages/${{ matrix.package }}
+
+      - name: Test ${{ matrix.package }}🧪
+        run: yarn test
+        working-directory: ./packages/${{ matrix.package }}
+
+      - name: Format Check ${{ matrix.package }} 📄
+        run: yarn format:check
+        working-directory: ./packages/${{ matrix.package }}
+
+      - name: Lint Check ${{ matrix.package }}
+        run: yarn lint
+        working-directory: ./packages/${{ matrix.package }}
+
   publish:
     runs-on: ubuntu-latest
     steps:

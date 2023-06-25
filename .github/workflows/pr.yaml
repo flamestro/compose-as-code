@@ -31,4 +31,3 @@ jobs:
       - name: Lint Check ${{ matrix.package }}
         run: yarn lint
         working-directory: ./packages/${{ matrix.package }}
-
