@@ -1,4 +1,4 @@
-name: Publish compose-as-code to npmjs
+name: PR Pipeline
 on:
   pull_request:
     branches: [main]
