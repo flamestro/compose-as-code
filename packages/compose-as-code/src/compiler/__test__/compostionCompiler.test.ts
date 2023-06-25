@@ -1,12 +1,11 @@
-import {Composition, CompositionProps} from '../../composition/composition';
-import {Service} from '../../composition/service';
-import {Network} from '../../composition/network';
-import {App} from '../../composition/app';
-import {Volume} from '../../composition/volume';
-import {snapshot} from "./helpers";
+import { Composition, CompositionProps } from '../../composition/composition';
+import { Service } from '../../composition/service';
+import { Network } from '../../composition/network';
+import { App } from '../../composition/app';
+import { Volume } from '../../composition/volume';
+import { snapshot } from './helpers';
 
-describe("all", () => {
-
+describe('all', () => {
   it('should create a valid docker compose file', async function () {
     class TestNetwork extends Network {
       constructor(scope, id) {
@@ -26,13 +25,13 @@ describe("all", () => {
 
     class TestRedisService extends Service {
       constructor(
-          scope,
-          id,
-          props: { networks: Network[]; volume?: Volume; dependsOn: Service[] }
+        scope,
+        id,
+        props: { networks: Network[]; volume?: Volume; dependsOn: Service[] }
       ) {
         const volumes = props.volume
-            ? [{ origin: '/etc/nginx/certs', destination: props.volume }]
-            : [];
+          ? [{ origin: '/etc/nginx/certs', destination: props.volume }]
+          : [];
         super(scope, id, {
           image: 'redis',
           pullPolicy: 'always',
@@ -81,34 +80,33 @@ describe("all", () => {
       name: 'TestComposition',
     });
 
-    await snapshot("composition_it")
+    await snapshot('composition_it');
   });
 
-  describe("Service", () => {
-    it("should compile service.deploy.labels correctly", async () => {
+  describe('Service', () => {
+    it('should compile service.deploy.labels correctly', async () => {
       const app = new App('Service.Deploy.Labels');
 
       class TestComposition extends Composition {
         constructor(id: string, props: CompositionProps) {
           super(app, id, props);
-          new Service(this, "Service", {
-            image: "redis",
+          new Service(this, 'Service', {
+            image: 'redis',
             deploy: {
               labels: {
-                ["de.label"]: "label"
-              }
-            }
-          })
+                ['de.label']: 'label',
+              },
+            },
+          });
         }
       }
 
-      new TestComposition("Composition", {
-        version: "3.8",
-        name: "composition"
-      })
+      new TestComposition('Composition', {
+        version: '3.8',
+        name: 'composition',
+      });
 
-      await snapshot("service_deploy_labels")
-    })
-  })
-
-})
+      await snapshot('service_deploy_labels');
+    });
+  });
+});
