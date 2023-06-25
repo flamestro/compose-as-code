@@ -234,6 +234,14 @@ const compileService = (service: Service) => {
         baseIndentation + 2
       );
     }
+    if (service.deploy.labels && Object.keys(service.deploy.labels).length > 0) {
+      serviceTextBlock += compileKeyValuePair(
+          'labels',
+          '',
+          baseIndentation + 2
+      );
+      serviceTextBlock += compileObject(service.deploy.labels, baseIndentation + 3);
+    }
     if (service.deploy.resources) {
       serviceTextBlock += compileKeyValuePair(
         'resources',

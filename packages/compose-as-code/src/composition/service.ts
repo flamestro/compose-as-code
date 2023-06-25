@@ -38,6 +38,7 @@ export type ServiceProps = {
       limits?: { cpus?: string; memory?: string; pids?: number };
       reservations?: { cpus?: string; memory?: string };
     };
+    labels?: { [key: string]: string };
   };
   memReservation?: string;
   memLimit?: string;
@@ -80,6 +81,7 @@ export class Service {
       limits?: { cpus?: string; memory?: string; pids?: number };
       reservations?: { cpus?: string; memory?: string };
     };
+    labels?: { [key: string]: string };
   };
   memReservation?: string;
   memLimit?: string;

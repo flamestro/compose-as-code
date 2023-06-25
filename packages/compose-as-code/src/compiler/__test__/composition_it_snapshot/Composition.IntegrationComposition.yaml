@@ -1,7 +1,7 @@
 version: "3.8"
 name: "testcomposition"
 services: 
-  MyAppTestCompositionTestService1: 
+  Composition.IntegrationCompositionTestService1: 
     image: "redis"
     pull_policy: "always"
     restart: "always"
@@ -18,11 +18,11 @@ services:
           cpus: "0.02"
     mem_reservation: "10M"
     networks: 
-      MyAppTestCompositionTestNetwork1: 
-      MyAppTestCompositionTestNetwork2: 
+      Composition.IntegrationCompositionTestNetwork1: 
+      Composition.IntegrationCompositionTestNetwork2: 
     volumes: 
-      - MyAppTestCompositionTestVolume:/etc/nginx/certs
-  MyAppTestCompositionTestService2: 
+      - Composition.IntegrationCompositionTestVolume:/etc/nginx/certs
+  Composition.IntegrationCompositionTestService2: 
     image: "redis"
     pull_policy: "always"
     restart: "always"
@@ -39,12 +39,12 @@ services:
           cpus: "0.02"
     mem_reservation: "10M"
     networks: 
-      MyAppTestCompositionTestNetwork1: 
+      Composition.IntegrationCompositionTestNetwork1: 
     depends_on: 
-      - MyAppTestCompositionTestService1
+      - Composition.IntegrationCompositionTestService1
 networks: 
-  MyAppTestCompositionTestNetwork1: 
-  MyAppTestCompositionTestNetwork2: 
+  Composition.IntegrationCompositionTestNetwork1: 
+  Composition.IntegrationCompositionTestNetwork2: 
 volumes: 
-  MyAppTestCompositionTestVolume: 
+  Composition.IntegrationCompositionTestVolume: 
     driver: "overlay"
