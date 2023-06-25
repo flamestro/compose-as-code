@@ -1,0 +1,8 @@
+version: "3.8"
+name: "composition"
+services: 
+  Service.Deploy.LabelsCompositionService: 
+    image: "redis"
+    deploy: 
+      labels: 
+        de.label: label
