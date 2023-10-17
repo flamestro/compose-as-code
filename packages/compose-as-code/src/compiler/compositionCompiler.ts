@@ -55,3 +55,30 @@ export const compile = async (compilerProps: CompilerProps) => {
   resultingFiles.forEach(file => writeFile(file));
   return Promise.resolve(resultingFiles);
 };
+
+export const listContainers = async (): Promise<
+  { composition: Composition; containerNames: string[] }[]
+> => {
+  const app = globalThis.cacStore.app;
+  if (!app) {
+    console.error(
+      'No app was defined. Without an app there is no composition possible.'
+    );
+    return Promise.reject();
+  }
+  console.log(`Found ${app.compositions.length} compositions`);
+  const containerNames: {
+    composition: Composition;
+    containerNames: string[];
+  }[] = [];
+  for (const composition of app.compositions) {
+    containerNames.push({
+      composition,
+      containerNames: composition.services.map(
+        service =>
+          service.containerName || `${composition.name}-${service.id}-1`
+      ),
+    });
+  }
+  return Promise.resolve(containerNames);
+};

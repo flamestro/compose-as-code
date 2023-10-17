@@ -3,8 +3,10 @@
 import fs from 'fs';
 import * as esbuild from 'esbuild';
 
-import { compile } from './compiler/compositionCompiler';
+import { compile, listContainers } from './compiler/compositionCompiler';
 import { loadConfiguration } from './configuration/configLoader';
+
+const args = process.argv;
 
 console.log('Loading Config 🗂️');
 const configuration = loadConfiguration();
@@ -30,6 +32,10 @@ fs.readFile(
       await compile({
         outputDir: configuration.outputDir,
       });
+
+      if (args.includes('ls')) {
+        console.log(await listContainers());
+      }
     } else {
       console.error(err);
     }
