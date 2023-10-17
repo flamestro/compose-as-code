@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.3.15 (2023-10-17)
+
+**Note:** Version bump only for package create-composition
+
+
+
+
+
 ## [1.3.14](https://github.com/flamestro/compose-as-code/compare/create-composition@1.3.13...create-composition@1.3.14) (2023-06-23)
 
 **Note:** Version bump only for package create-composition
