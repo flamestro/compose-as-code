@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@types/node": "^20.2.1",
-    "compose-as-code": "^1.0.1"
+    "compose-as-code": "^1.4.1"
   },
   "devDependencies": {
     "typescript": "^5.0.4"
