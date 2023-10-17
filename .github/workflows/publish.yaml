@@ -52,6 +52,10 @@ jobs:
           git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
       - name: Publish Packages 🚀
+        working-directory: ./packages/compose-as-code
+        run: yarn build
+
+      - name: Publish Packages 🚀
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
