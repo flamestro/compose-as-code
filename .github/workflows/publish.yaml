@@ -53,7 +53,7 @@ jobs:
 
       - name: Publish Packages 🚀
         working-directory: ./packages/compose-as-code
-        run: yarn tsc
+        run: yarn && yarn tsc
 
       - name: Publish Packages 🚀
         env:
