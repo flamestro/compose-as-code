@@ -1,8 +1,8 @@
 import fs from 'fs';
 
 interface CacConfiguration {
-  entrypoint: string;
   outputDir: string;
+  entrypoint: string;
 }
 
 export const loadConfiguration = () => {

@@ -4,7 +4,7 @@ out
 .gitignore
 babel.config.js
 tsconfig.json
-yarn.lock
+./yarn.lock
 yarn-error.log
 .github
 dist
