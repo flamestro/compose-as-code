@@ -53,6 +53,7 @@ export const compile = async (compilerProps: CompilerProps) => {
     });
   }
   resultingFiles.forEach(file => writeFile(file));
+  globalThis.cacStore.app = undefined
   return Promise.resolve(resultingFiles);
 };
 
