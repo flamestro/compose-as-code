@@ -29,6 +29,8 @@ export type ServiceProps = {
   deviceWriteIops?: { path: string; rate: number };
   weight?: number;
   weightDevice?: { path: string; weight: number };
+
+  securityOpt?: {key: 'seccomp', value: string}[];
   capAdd?: string[];
   capDrop?: string[];
   cgroupParent?: string;
@@ -83,6 +85,7 @@ export class Service {
     };
     labels?: { [key: string]: string };
   };
+  securityOpt?: {key: 'seccomp', value: string}[];
   memReservation?: string;
   memLimit?: string;
   command?: string;
@@ -118,6 +121,7 @@ export class Service {
     this.capAdd = props.capAdd;
     this.capDrop = props.capDrop;
     this.deploy = props.deploy;
+    this.securityOpt = props.securityOpt;
     this.cgroupParent = props.cgroupParent;
     this.memLimit = props.memLimit;
     this.containerName = props.containerName;

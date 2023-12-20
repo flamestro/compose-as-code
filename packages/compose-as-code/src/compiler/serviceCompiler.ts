@@ -217,6 +217,10 @@ const compileService = (service: Service) => {
     serviceTextBlock += compileKeyValuePair('cap_add', '', baseIndentation + 1);
     serviceTextBlock += compileList(service.capAdd, baseIndentation + 2);
   }
+  if (service.securityOpt && service.securityOpt) {
+    serviceTextBlock += compileKeyValuePair('security_opt', '', baseIndentation + 1);
+    serviceTextBlock += compileList(service.securityOpt.map(entry => `${entry.key}:${entry.value}`), baseIndentation + 2);
+  }
   if (service.capDrop) {
     serviceTextBlock += compileKeyValuePair(
       'cap_drop',

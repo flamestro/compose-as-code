@@ -108,5 +108,30 @@ describe('all', () => {
 
       await snapshot('service_deploy_labels');
     });
+    it('should compile service.security_opt.seccomp correctly', async () => {
+      const app = new App('Service.Deploy.Labels');
+
+      class TestComposition extends Composition {
+        constructor(id: string, props: CompositionProps) {
+          super(app, id, props);
+          new Service(this, 'Service', {
+            image: 'redis',
+            deploy: {
+              labels: {
+                ['de.label']: 'label',
+              },
+            },
+            securityOpt: [{ key: 'seccomp', value: 'seccomp.json' }],
+          });
+        }
+      }
+
+      new TestComposition('Composition', {
+        version: '3.8',
+        name: 'composition',
+      });
+
+      await snapshot('service_security_opt_seccomp');
+    });
   });
 });
