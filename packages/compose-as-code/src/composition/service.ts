@@ -30,7 +30,7 @@ export type ServiceProps = {
   weight?: number;
   weightDevice?: { path: string; weight: number };
 
-  securityOpt?: {key: 'seccomp', value: string}[];
+  securityOpt?: { key: 'seccomp'; value: string }[];
   capAdd?: string[];
   capDrop?: string[];
   cgroupParent?: string;
@@ -85,7 +85,7 @@ export class Service {
     };
     labels?: { [key: string]: string };
   };
-  securityOpt?: {key: 'seccomp', value: string}[];
+  securityOpt?: { key: 'seccomp'; value: string }[];
   memReservation?: string;
   memLimit?: string;
   command?: string;
