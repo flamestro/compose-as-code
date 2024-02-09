@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/flamestro/compose-as-code/compare/compose-as-code@1.4.5...compose-as-code@1.5.0) (2024-02-09)
+
+
+### Features
+
+* **CaC:** add health checks to services ([343f3af](https://github.com/flamestro/compose-as-code/commit/343f3afd1590a15021c783b38453a2de5318280f))
+
+
+
+
+
 ## [1.4.5](https://github.com/flamestro/compose-as-code/compare/compose-as-code@1.4.4...compose-as-code@1.4.5) (2023-12-20)
 
 **Note:** Version bump only for package compose-as-code
