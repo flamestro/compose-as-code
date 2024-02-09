@@ -3,8 +3,10 @@ import { exec } from 'child_process';
 import fs from 'fs';
 import { createHash } from 'crypto';
 import { compile } from '../compositionCompiler';
+import { App } from '../../composition/app';
 
 const promisifiedExec = promisify(exec);
+
 async function hashDirectory(dirname) {
   try {
     let contentStr = '';
@@ -21,7 +23,11 @@ async function hashDirectory(dirname) {
   }
 }
 
-export async function snapshot(name: string) {
+export async function snapshot(
+  app: App,
+  name: string,
+  options?: { skipDockerCheck?: boolean }
+) {
   const resultDir = `${__dirname}/${name}_snapshot`;
   const hashBefore = (await hashDirectory(resultDir)) || '';
   const files = await compile({
@@ -30,10 +36,12 @@ export async function snapshot(name: string) {
   const hashAfter = await hashDirectory(resultDir);
 
   expect(hashAfter).toEqual(hashBefore);
-  for (const file of files) {
-    const result = await promisifiedExec(
-      `docker compose -f ${resultDir}/${file.fileName}.yaml config`
-    );
-    expect(result.stderr).toEqual('');
+  if (!options?.skipDockerCheck) {
+    for (const file of files) {
+      const result = await promisifiedExec(
+        `docker compose -f ${resultDir}/${file.fileName}.yaml config`
+      );
+      expect(result.stderr).toEqual('');
+    }
   }
 }
