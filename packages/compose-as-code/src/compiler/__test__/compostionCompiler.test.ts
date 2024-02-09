@@ -80,7 +80,7 @@ describe('all', () => {
       name: 'TestComposition',
     });
 
-    await snapshot(app, 'composition_it');
+    await snapshot(app, __dirname, 'composition_it');
   });
 
   describe('Service', () => {
@@ -106,7 +106,7 @@ describe('all', () => {
         name: 'composition',
       });
 
-      await snapshot(app, 'service_deploy_labels');
+      await snapshot(app, __dirname, 'service_deploy_labels');
     });
     it('should compile service.security_opt.seccomp correctly', async () => {
       const app = new App('Service.security_opt.seccomp');
@@ -131,7 +131,7 @@ describe('all', () => {
         name: 'composition',
       });
 
-      await snapshot(app, 'service_security_opt_seccomp');
+      await snapshot(app, __dirname, 'service_security_opt_seccomp');
     });
 
     it('should compile service.command string correctly', async () => {
@@ -157,7 +157,7 @@ describe('all', () => {
         name: 'composition',
       });
 
-      await snapshot(app, 'service_command_string');
+      await snapshot(app, __dirname, 'service_command_string');
     });
 
     it('should compile service.command string array value', async () => {
@@ -183,7 +183,7 @@ describe('all', () => {
         name: 'composition',
       });
 
-      await snapshot(app, 'service_command_string_array');
+      await snapshot(app, __dirname, 'service_command_string_array');
     });
 
     it('should compile service.healthcheck properly', async () => {
@@ -215,7 +215,7 @@ describe('all', () => {
         name: 'composition',
       });
 
-      await snapshot(app, 'service_healthcheck');
+      await snapshot(app, __dirname, 'service_healthcheck');
     });
   });
 });

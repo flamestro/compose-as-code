@@ -25,10 +25,11 @@ async function hashDirectory(dirname) {
 
 export async function snapshot(
   app: App,
+  outputDir: string,
   name: string,
   options?: { skipDockerCheck?: boolean }
 ) {
-  const resultDir = `${__dirname}/${name}_snapshot`;
+  const resultDir = `${outputDir}/${name}_snapshot`;
   const hashBefore = (await hashDirectory(resultDir)) || '';
   const files = await compile({
     outputDir: resultDir,
