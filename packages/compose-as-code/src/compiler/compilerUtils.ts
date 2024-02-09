@@ -21,7 +21,7 @@ export const compileKeyValuePair = (
   options?: { noQuotes?: boolean }
 ) => {
   let result = '';
-  let quote = options?.noQuotes ? '' : '"';
+  const quote = options?.noQuotes ? '' : '"';
   result += indent(indentationDepth);
   result += `${key}: ${value ? `${quote}${value}${quote}` : ''}\n`;
   return result;
