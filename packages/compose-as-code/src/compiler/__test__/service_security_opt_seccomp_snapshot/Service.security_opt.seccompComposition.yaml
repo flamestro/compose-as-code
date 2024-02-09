@@ -1,0 +1,10 @@
+version: "3.8"
+name: "composition"
+services: 
+  Service.security_opt.seccompCompositionService: 
+    image: "redis"
+    security_opt: 
+      - seccomp:seccomp.json
+    deploy: 
+      labels: 
+        de.label: label

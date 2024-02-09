@@ -1,10 +1,11 @@
 version: "3.8"
 name: "composition"
 services: 
-  Service.Deploy.LabelsCompositionService: 
+  Service.CommandCompositionService: 
     image: "redis"
-    security_opt: 
-      - seccomp:seccomp.json
     deploy: 
       labels: 
         de.label: label
+    command: 
+      - echo
+      - Hello, World!

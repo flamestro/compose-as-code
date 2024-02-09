@@ -109,7 +109,7 @@ describe('all', () => {
       await snapshot('service_deploy_labels');
     });
     it('should compile service.security_opt.seccomp correctly', async () => {
-      const app = new App('Service.Deploy.Labels');
+      const app = new App('Service.security_opt.seccomp');
 
       class TestComposition extends Composition {
         constructor(id: string, props: CompositionProps) {
@@ -132,6 +132,59 @@ describe('all', () => {
       });
 
       await snapshot('service_security_opt_seccomp');
+    });
+
+
+    it('should compile service.command string correctly', async () => {
+      const app = new App('Service.Command');
+
+      class TestComposition extends Composition {
+        constructor(id: string, props: CompositionProps) {
+          super(app, id, props);
+          new Service(this, 'Service', {
+            image: 'redis',
+            deploy: {
+              labels: {
+                ['de.label']: 'label',
+              },
+            },
+            command: "echo 'Hello, World!'",
+          });
+        }
+      }
+
+      new TestComposition('Composition', {
+        version: '3.8',
+        name: 'composition',
+      });
+
+      await snapshot('service_command_string');
+    });
+
+    it('should compile service.command string array value', async () => {
+      const app = new App('Service.Command');
+
+      class TestComposition extends Composition {
+        constructor(id: string, props: CompositionProps) {
+          super(app, id, props);
+          new Service(this, 'Service', {
+            image: 'redis',
+            deploy: {
+              labels: {
+                ['de.label']: 'label',
+              },
+            },
+            command: ["echo", "Hello, World!"],
+          });
+        }
+      }
+
+      new TestComposition('Composition', {
+        version: '3.8',
+        name: 'composition',
+      });
+
+      await snapshot('service_command_string_array');
     });
   });
 });

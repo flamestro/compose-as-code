@@ -44,7 +44,7 @@ export type ServiceProps = {
   };
   memReservation?: string;
   memLimit?: string;
-  command?: string;
+  command?: string | string[];
   containerName?: string;
   entryPoint?: string;
   dependsOn?: Service[];
@@ -88,7 +88,7 @@ export class Service {
   securityOpt?: { key: 'seccomp'; value: string }[];
   memReservation?: string;
   memLimit?: string;
-  command?: string;
+  command?: string | string[];
   containerName?: string;
   entryPoint?: string;
   dependsOn?: Service[];

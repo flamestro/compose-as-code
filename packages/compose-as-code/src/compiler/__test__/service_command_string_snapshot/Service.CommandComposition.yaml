@@ -1,0 +1,9 @@
+version: "3.8"
+name: "composition"
+services: 
+  Service.CommandCompositionService: 
+    image: "redis"
+    deploy: 
+      labels: 
+        de.label: label
+    command: echo 'Hello, World!'

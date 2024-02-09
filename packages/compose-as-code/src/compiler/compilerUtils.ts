@@ -17,11 +17,13 @@ export const createDirIfNotExisting = (dirname: string) => {
 export const compileKeyValuePair = (
   key: string,
   value: string | number,
-  indentationDepth: number
+  indentationDepth: number,
+  options?: {  noQuotes?: boolean }
 ) => {
   let result = '';
+  let quote = options?.noQuotes ? '' : '"';
   result += indent(indentationDepth);
-  result += `${key}: ${value ? `"${value}"` : ''}\n`;
+  result += `${key}: ${value ? `${quote}${value}${quote}` : ''}\n`;
   return result;
 };
 
