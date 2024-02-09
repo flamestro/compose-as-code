@@ -360,6 +360,10 @@ const compileService = (service: Service) => {
             serviceTextBlock += compileList(service.command, baseIndentation + 2)
         }
     }
+    if (service.healthCheck) {
+        serviceTextBlock += compileKeyValuePair('healthcheck', '', baseIndentation + 1);
+        serviceTextBlock += compileObject(service.healthCheck, baseIndentation + 2);
+    }
     if (service.containerName) {
         serviceTextBlock += compileKeyValuePair(
             'container_name',

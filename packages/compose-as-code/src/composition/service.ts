@@ -8,6 +8,14 @@ export type ServiceVolume = {
   accessMode?: 'rw' | 'ro' | 'z';
 };
 
+export type ServiceHealthCheck = {
+  test: string[];
+  interval: string;
+  timeout?: string;
+  retries: number;
+  start_period: string;
+};
+
 export type ServiceProps = {
   image: string;
   pullPolicy?: 'always' | 'if-not-present' | 'never';
@@ -23,6 +31,7 @@ export type ServiceProps = {
   cpuRtRuntime?: string;
   cpuRtPeriod?: string;
   cpuSet?: string;
+  healthCheck?: ServiceHealthCheck;
   deviceReadBps?: { path: string; rate: number };
   deviceWriteBps?: { path: string; rate: number };
   deviceReadIops?: { path: string; rate: number };
@@ -68,6 +77,7 @@ export class Service {
   cpuRtRuntime?: string;
   cpuRtPeriod?: string;
   cpuSet?: string;
+  healthCheck?: ServiceHealthCheck;
   deviceReadBps?: { path: string; rate: number };
   deviceWriteBps?: { path: string; rate: number };
   deviceReadIops?: { path: string; rate: number };
@@ -103,6 +113,7 @@ export class Service {
     this.restart = props.restart;
     this.expose = props.expose;
     this.ports = props.ports;
+    this.healthCheck = props.healthCheck;
     this.environment = props.environment;
     this.cpuCount = props.cpuCount;
     this.cpuPercent = props.cpuPercent;
