@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/flamestro/compose-as-code/compare/compose-as-code@1.5.2...compose-as-code@1.6.0) (2024-05-24)
+
+
+### Features
+
+* **CaC:** Change how volumes are addressed in services, as there were unclarities with the naming ([2dd1e2e](https://github.com/flamestro/compose-as-code/commit/2dd1e2e5c61fb905df0577d2e3c1848b28eb9259))
+
+
+
+
+
 ## [1.5.2](https://github.com/flamestro/compose-as-code/compare/compose-as-code@1.5.1...compose-as-code@1.5.2) (2024-02-09)
 
 **Note:** Version bump only for package compose-as-code
