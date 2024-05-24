@@ -14,12 +14,12 @@ const compileServiceVolumes = (
 ) => {
   let result = '';
   serviceVolumes.forEach(entry => {
-    const extractedDestination =
-      typeof entry.destination === 'string'
-        ? entry.destination
-        : entry.destination.id;
+    const extractedHostLocation =
+      typeof entry.hostLocation === 'string'
+        ? entry.hostLocation
+        : entry.hostLocation.id;
     result += indent(baseIndentationDepth);
-    result += `- ${extractedDestination}:${entry.origin}${
+    result += `- ${extractedHostLocation}:${entry.containerLocation}${
       entry.accessMode ? ':' + entry.accessMode : ''
     }\n`;
   });

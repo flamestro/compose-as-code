@@ -3,8 +3,8 @@ import { Network } from './network';
 import { Volume } from './volume';
 
 export type ServiceVolume = {
-  origin: string;
-  destination: Volume | string;
+  containerLocation: string;
+  hostLocation: Volume | string;
   accessMode?: 'rw' | 'ro' | 'z';
 };
 

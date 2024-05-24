@@ -30,7 +30,7 @@ describe('all', () => {
         props: { networks: Network[]; volume?: Volume; dependsOn: Service[] }
       ) {
         const volumes = props.volume
-          ? [{ origin: '/etc/nginx/certs', destination: props.volume }]
+          ? [{ containerLocation: '/etc/nginx/certs', hostLocation: props.volume }]
           : [];
         super(scope, id, {
           image: 'redis',
