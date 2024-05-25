@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.19](https://github.com/flamestro/compose-as-code/compare/create-composition@1.3.18...create-composition@1.3.19) (2024-05-25)
+
+
+### Bug Fixes
+
+* **CreCo:** Fix naming of volume fields in template ([dc7f444](https://github.com/flamestro/compose-as-code/commit/dc7f44491fd0d87dfad1fa3477997f23d0d355d3))
+
+
+
+
+
 ## 1.3.18 (2024-05-25)
 
 **Note:** Version bump only for package create-composition
