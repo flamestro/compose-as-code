@@ -16,7 +16,7 @@ esbuild.buildSync({
   entryPoints: [configuration.entrypoint],
   bundle: true,
   outfile: `${configuration.outputDir}/bundled.js`,
-  target: 'node16',
+  target: 'node18',
   platform: 'node',
 });
 
