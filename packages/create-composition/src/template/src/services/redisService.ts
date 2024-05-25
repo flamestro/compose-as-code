@@ -22,7 +22,7 @@ export class RedisService extends Service {
         },
       },
       restart: 'always',
-      volumes: [{ origin: '/example', destination: props.volume }],
+      volumes: [{ containerLocation: '/example', hostLocation: props.volume }],
       networks: [props.network],
     });
   }
