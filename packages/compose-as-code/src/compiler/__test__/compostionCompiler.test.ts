@@ -191,6 +191,32 @@ describe('all', () => {
       await snapshot(app, __dirname, 'service_command_string_array');
     });
 
+    it('should compile service.command without escaping it', async () => {
+      const app = new App('Service.Command');
+
+      class TestComposition extends Composition {
+        constructor(id: string, props: CompositionProps) {
+          super(app, id, props);
+          new Service(this, 'Service', {
+            image: 'redis',
+            deploy: {
+              labels: {
+                ['de.label']: 'label',
+              },
+            },
+            command: `-c 'echo "$$CONSOLE_CONFIG_FILE" > /tmp/config.yml; /app/console'`,
+          });
+        }
+      }
+
+      new TestComposition('Composition', {
+        version: '3.8',
+        name: 'composition',
+      });
+
+      await snapshot(app, __dirname, 'service_command_unescaped_string');
+    });
+
     it('should compile service.healthcheck properly', async () => {
       const app = new App('Service.Healthcheck');
 

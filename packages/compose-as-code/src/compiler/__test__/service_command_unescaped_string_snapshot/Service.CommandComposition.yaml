@@ -1,0 +1,9 @@
+version: "3.8"
+name: "composition"
+services: 
+  Service.CommandCompositionService: 
+    image: "redis"
+    deploy: 
+      labels: 
+        de.label: label
+    command: -c 'echo "$$CONSOLE_CONFIG_FILE" > /tmp/config.yml; /app/console'
