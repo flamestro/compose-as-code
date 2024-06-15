@@ -217,6 +217,36 @@ describe('all', () => {
       await snapshot(app, __dirname, 'service_command_unescaped_string');
     });
 
+    it('should compile service.environment on multiple lines without breaking it', async () => {
+      const app = new App('Service.Command');
+
+      class TestComposition extends Composition {
+        constructor(id: string, props: CompositionProps) {
+          super(app, id, props);
+          new Service(this, 'Service', {
+            image: 'redis',
+            environment: {
+              CONFIG_FILEPATH: "/tmp/config.yml",
+              CONSOLE_CONFIG_FILE: `|
+kafka:
+    brokers: ["redpanda-0:9092"]
+redpanda:
+    adminApi:
+        enabled: true
+urls: ["http://redpanda-0:9644"]`
+            },
+          });
+        }
+      }
+
+      new TestComposition('Composition', {
+        version: '3.8',
+        name: 'composition',
+      });
+
+      await snapshot(app, __dirname, 'service_environment_multi_line');
+    });
+
     it('should compile service.healthcheck properly', async () => {
       const app = new App('Service.Healthcheck');
 
