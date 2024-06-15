@@ -226,14 +226,14 @@ describe('all', () => {
           new Service(this, 'Service', {
             image: 'redis',
             environment: {
-              CONFIG_FILEPATH: "/tmp/config.yml",
+              CONFIG_FILEPATH: '/tmp/config.yml',
               CONSOLE_CONFIG_FILE: `|
 kafka:
     brokers: ["redpanda-0:9092"]
 redpanda:
     adminApi:
         enabled: true
-urls: ["http://redpanda-0:9644"]`
+urls: ["http://redpanda-0:9644"]`,
             },
           });
         }
