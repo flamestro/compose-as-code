@@ -11,7 +11,7 @@ The benefits of this:
 
 - generate docker compose files in a typesafe way
 - write tests for your docker compose infrastructure
-- store customer infrastructure definitions in a database and apply them (like https://servercontrol.io)
+- store customer infrastructure definitions in a database and apply them (like https://servercontrol.dev)
 - flex around that you use typescript to write docker compose infrastructures
 
 # Getting Started
