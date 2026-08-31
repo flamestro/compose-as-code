@@ -1,3 +1,5 @@
+
+
 # Compose-as-Code
 
 [![Npm package version](https://badgen.net/npm/v/compose-as-code)](https://npmjs.com/package/compose-as-code)
@@ -20,7 +22,7 @@ To create a minimal project with some example code you can use:
 
 `npx create-composition@latest my-app`
 
-This will give you a project on which you can run `yarn conduct`. Afterward, you can check out the `./out` dir in which
+This will give you a project on which you can run `yarn install` and then `yarn conduct`. Afterward, you can check out the `./out` dir in which
 you will find the generated docker compose files. 
 
 # Basic Structure
